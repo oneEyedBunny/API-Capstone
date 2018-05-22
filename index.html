@@ -6,11 +6,12 @@
   <title>Travel Eat Do Sleep</title>
   <link href="main.css" rel="stylesheet" type="text/css" />
   <link href="media.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
   <nav role="navigation">
     <div class="left-nav-bar">
-      <img src="images/logo.png" id="logo"/>
+      <img src="images/logo_final.png" id="logo"/>
     </div>
     <div class="right-nav-bar">
       <a href="#anchor-2" class="nav-link">Travel</a>
@@ -19,70 +20,118 @@
     </div>
   </nav>
   <main role="main">
-    <div class="page-1">
+    <div class="page-1 hidden">
       <div class="background-image-container">
-      <div class="intro-text standard-box">
-        <div class="airbnb-logo">
-          <img src="images/airbnb_logo.png" alt="airbnb logo"/>
+        <div class="intro-text standard-box">
+          <div class="airbnb-logo">
+            <img src="images/airbnb_logo.png" alt="airbnb logo"/>
+          </div>
+          <h1>Looking to find Airbnb’s near the things you want to explore in a city?</h1>
+          <p>Search below for restaurants, bars, tourist attractions, or whatever and we’ll connect you with the nearby AirBnB options</p>
         </div>
-        <h1>Looking to find Airbnb’s near the things you want to explore in a city?</h1>
-        <p>Search below for restaurants, bars, tourist attractions, or whatever and we’ll connect you with the nearby AirBnB options</p>
+        <div class="form-container standard-box" id="anchor-1">
+          <form role="form" class="search-form">
+            <fieldset>
+              <input class="search-data" type="search" placeholder="FOR  Restaurants, bars, Joes BBQ" required>
+              </input>
+              <input class="search-loc" type="search" placeholder="IN  Portland, OR" required>
+              </input>
+              <button role="button" type="submit" class="search-button">
+                <img src="images/search_logo_1.png" alt="search icon"/>
+              </button>
+            </fieldset>
+          </form>
+        </div>
       </div>
-      <div class="form-container standard-box" id="anchor-1">
-        <form role="form" class="search-form">
-          <fieldset>
-            <label></label>
-            <input class="search-data" type="search" placeholder="FOR  Restaurants, bars, Joes BBQ" required></input>
-            <label></label>
-            <input class="search-loc" type="search" placeholder="IN  Portland, OR" required>
+  <section role="region">
+    <div class="info-sec left" id="anchor-2">
+      <div class="info-sec-img">
+        <img src="images/find.jpg" alt="travel to a city" class="instructions" />
+      </div>
+      <div class="info-sec-text">
+        <h1>Pick a city to travel to</h1>
+        <p>First enter the city & state you're interested in visiting</p>
+      </div>
+    </div>
+    <div class="info-sec right" id="anchor-3">
+      <div class="info-sec-img">
+        <img src="images/go.jpg" alt="do things" class="instructions"/>
+      </div>
+      <div class="info-sec-text">
+        <h1>Explore things that interest you</h1>
+        <p>Search for cool things you want to be near. Maybe it's coffee shops or bars or an area with the most tourist attractions</p>
+      </div>
+    </div>
+    <div class="info-sec left" id="anchor-4">
+      <div class="info-sec-img">
+        <img src="images/stay.jpg" alt="sleep in the neighborhood" class="instructions" />
+      </div>
+      <div class="info-sec-text">
+        <h1>Find Airbnbs nearby</h1>
+        <p>Once you find the things you want to do, select the Airbnb button to show you all the surrounding Airbnbs. You can refine your Airbnb list from there based on preferences</p>
+      </div>
+    </div>
+  </section>
+  <footer role="contentinfo">
+    <div class="right-footer-bar">
+      <a href="#anchor-1" class="nav-link">Search</a>
+    </div>
+  </footer>
+</div>  <!-- page1 -->
+<div class="page-2">
+  <div class="results-container">
+    <div class="form-container" id="anchor-1">
+      <form role="form" class="search-form">
+        <fieldset>
+          <input class="search-data" type="search" placeholder="FOR  Restaurants, bars, Joes BBQ" required>
+          </input>
+          <input class="search-loc" type="search" placeholder="IN  Portland, OR" required>
           </input>
           <button role="button" type="submit" class="search-button">
             <img src="images/search_logo_1.png" alt="search icon"/>
           </button>
         </fieldset>
       </form>
-    </div>
   </div>
-    <section role="region">
-      <div class="info-sec left" id="anchor-2">
-        <div class="info-sec-img">
-          <img src="images/find.jpg" alt="travel to a city" class="instructions" />
-        </div>
-        <div class="info-sec-text">
-          <h1>Pick a city to travel to</h1>
-          <p>First enter the city & state you're interested in visiting</p>
-        </div>
-      </div>
-      <div class="info-sec right" id="anchor-3">
-        <div class="info-sec-img">
-          <img src="images/go.jpg" alt="do things" class="instructions"/>
-        </div>
-        <div class="info-sec-text">
-          <h1>Explore things that interest you</h1>
-          <p>Search for cool things you want to be near. Maybe it's coffee shops or bars or an area with the most tourist attractions</p>
-        </div>
-      </div>
-      <div class="info-sec left" id="anchor-4">
-        <div class="info-sec-img">
-          <img src="images/stay.jpg" alt="sleep in the neighborhood" class="instructions" />
-        </div>
-        <div class="info-sec-text">
-          <h1>Find Airbnbs nearby</h1>
-          <p>Once you find the things you want to do, select the Airbnb button to show you all the surrounding Airbnbs. You can refine your Airbnb list from there based on preferences</p>
-        </div>
-      </div>
-    </section>
-    <footer role="contentinfo">
-      <div class="right-footer-bar">
-        <a href="#anchor-1" class="nav-link">Search</a>
-      </div>
-    </footer>
-  </div>  <!-- page1 -->
-  <div class="page-2">
-  </div> <!-- page2 -->
-  <!-- <script src="" google maps here></script> -->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <!-- <script src="app.js"></script> -->
+  <div class="nav-arrow-container">
+    <img src="images/arrow_right_icon.png" alt="" class="nav-arrow" id="right-arrow" />
+  </div>
+  <div class="results-data">
+  <!-- this will be created in JS -->
+    <div class="results-data-card clearfix">
+      <ul class="business-list-details">
+        <li><img class="business business-img" src="images/podnahs.jpeg" alt=""/></li>
+        <li class="business business-name">Podnahs</li>
+        <li class="business business-desc">A home town BBQ spot</li>
+        <li><img class="business business-rating" src="" alt="rating stars"/></li>
+        <li><a class="business business-reviews">117 reviews</a></li>
+        <li><a class="business business-more">more...</a></li>
+      </ul>
+    </div>
+    <div class="results-data-card clearfix">
+      <ul class="business-list-details">
+        <li><img class="business business-img" src="images/podnahs.jpeg" alt=""/></li>
+        <li class="business business-name">Podnahs</li>
+        <li class="business business-desc">A home town BBQ spot</li>
+        <li><img class="business business-rating" src="" alt="rating stars"/></li>
+        <li><a class="business business-reviews">117 reviews</a></li>
+        <li><a class="business business-more">more...</a></li>
+      </ul>
+    </div>
+<!-- this will be created in JS -->
+  </div>
+  <div class="map-container" id="map">
+  </div>
+
+
+
+
+
+
+</div> <!-- page2 -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfRWcwPCxX3Qn5osEm9oM1AdEzzh-kMzc&callback=initMap" async defer></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- <script src="app.js"></script> -->
 </main>
 </body>
 </html>
