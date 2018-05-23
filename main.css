@@ -50,7 +50,7 @@ nav {
   padding: 4px 0 1px 10px;
 }
 
-a {
+.nav-link {
   color: white;
   text-align: right;
   padding: 0px 5px;
@@ -92,7 +92,8 @@ h1 {
 }
 
 .form-container {
-  width: 90%;
+  width: 85%;
+  display: inline-block;
 }
 
 fieldset {
@@ -102,15 +103,11 @@ fieldset {
 .search-data,
 .search-loc {
   font-size: 9px;
-  box-shadow: 5px 10px 8px #888888;
+  box-shadow: 5px 5px 5px #888888;
   padding: 5px;
   margin-top: 6px;
+  border-radius: 0px;
 }
-
-/* .search-data::placeholder {
-  font-weight: bold;
-  color: black;
-} */
 
 .search-data {
   width: 58%;
@@ -121,16 +118,23 @@ fieldset {
   margin-left: -10px;
 }
 
+.search-button-container {
+  display: inline-block;
+  width: 8%;
+  background-color: white;
+  margin-left: -4px;
+  vertical-align: middle;
+  border-radius: 0;
+  box-shadow: 5px 5px 5px #888888;
+}
+
 .search-button {
   border-radius: 0px;
   padding: 0px;
-  float: right;
-  margin-top: 5px;
-  /* can't get the margin to work solely on this and not input items */
 }
 
 .search-button img {
-  height: 25px;
+  width: 100%;
 }
 
 .info-sec {
@@ -165,25 +169,17 @@ footer {
 }
 
 .right-footer-bar a {
-}
-/* ------------------------ page 2 styling */
-/* .search-form-2 {
-  background-color: #093E84;
+
 }
 
-.search-data-2, .search-loc-2 {
-  font-size: 9px;
-  box-shadow: none;
-  padding: 5px;
-  margin-top: 6px;
-} */
+/* ------------------------ page 2 styling */
 
 .nav-arrow-container {
   background-color: #357ec7;
   display: inline-block;
-  width: 30px;
+  width: 8%;
   float: right;
-  margin-top: 8px;
+  margin-top:7px;
 }
 
 .nav-arrow {
@@ -191,8 +187,10 @@ footer {
 }
 
 .results-data {
-  scroll: auto;
+  width: 45%;
+  display:inline-block;
 }
+
 .results-container {
   margin-top: 50px;
 }
@@ -202,11 +200,18 @@ footer {
   margin: 10px;
 }
 
-.map-container {
+#map {
+  height: 1000px;
+  width: 45%;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
-#map {
+html, body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .business-list-details {
@@ -217,18 +222,16 @@ footer {
   vertical-align: top;
 }
 
-.clearfix::after {
+/* .clearfix::after {
   content: "";
   clear: both;
   display: table;
-}
+} */
 
-.business,
-.business-review-qty,
-.business-rating-img,
-.business-more {
+.business {
   font-size: 10px;
   color: #4c4c4c;
+  margin: 0;
 }
 
 .business-img-container {
@@ -239,26 +242,24 @@ footer {
 .business-img {
   width: 100%;
 }
-ul li:nth-child(1) {
+.business-name {
   font-size: 13px;
   color: black;
 }
 
-/*Getting the rating image and the rating qty to display besides each other*/
-ul li:nth-child(3) {
-  display: inline-block;
-}
-ul li:nth-child(4) {
-  display: inline-block;
+.business-more {
+  display: block
 }
 
 .airbnb-button {
   background-color: white;
   color: #093e84;
-  margin: 0;
+  margin-top: 7px;
+  margin-bottom: 0;
   border: 1px solid #093e84;
-  font-size: 13px;
-  display: inline;
+  font-size: 10px;
+  display: inline-block;
+  padding: 5px;
 }
 
 /* width */

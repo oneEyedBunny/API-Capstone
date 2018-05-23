@@ -8,19 +8,19 @@
   <link href="media.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
-<body>
+<body onload="initMap()">
   <nav role="navigation">
     <div class="left-nav-bar">
       <img src="images/logo_final.png" id="logo"/>
     </div>
     <div class="right-nav-bar">
-      <a href="#anchor-2" class="nav-link">Travel</a>
-      <a href="#anchor-3" class="nav-link">Explore</a>
-      <a href="#anchor-4" class="nav-link">Sleep</a>
+      <a href="#anchor-travel" class="nav-link">Travel</a>
+      <a href="#anchor-explore" class="nav-link">Explore</a>
+      <a href="#anchor-sleep" class="nav-link">Sleep</a>
     </div>
   </nav>
   <main role="main">
-    <div class="page-1">
+    <div class="page-1 hidden">
       <div class="background-image-container">
         <div class="intro-text standard-box">
           <div class="airbnb-logo">
@@ -29,105 +29,98 @@
           <h1>Looking to find Airbnb’s near the things you want to explore in a city?</h1>
           <p>Search below for restaurants, bars, tourist attractions, or whatever and we’ll connect you with the nearby AirBnB options</p>
         </div>
-        <div class="form-container standard-box" id="anchor-1">
+        <div class="form-container standard-box" id="anchor-search">
           <form role="form" class="search-form">
             <fieldset>
-              <input class="search-data" type="search" placeholder="FOR  Restaurants, bars, Joes BBQ" required>
-            </input>
-            <input class="search-loc" type="search" placeholder="IN  Portland, OR" required>
-          </input>
-          <button role="button" type="submit" class="search-button">
-            <img src="images/search_logo_1.png" alt="search icon"/>
-          </button>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-  <section role="region">
-    <div class="info-sec left" id="anchor-2">
-      <div class="info-sec-img">
-        <img src="images/find.jpg" alt="travel to a city" class="instructions" />
-      </div>
-      <div class="info-sec-text">
-        <h1>Pick a city to travel to</h1>
-        <p>First enter the city & state you're interested in visiting</p>
-      </div>
-    </div>
-    <div class="info-sec right" id="anchor-3">
-      <div class="info-sec-img">
-        <img src="images/go.jpg" alt="do things" class="instructions"/>
-      </div>
-      <div class="info-sec-text">
-        <h1>Explore things that interest you</h1>
-        <p>Search for cool things you want to be near. Maybe it's coffee shops or bars or an area with the most tourist attractions</p>
-      </div>
-    </div>
-    <div class="info-sec left" id="anchor-4">
-      <div class="info-sec-img">
-        <img src="images/stay.jpg" alt="sleep in the neighborhood" class="instructions" />
-      </div>
-      <div class="info-sec-text">
-        <h1>Find Airbnbs nearby</h1>
-        <p>Once you find the things you want to do, select the Airbnb button to show you all the surrounding Airbnbs. You can refine your Airbnb list from there based on preferences</p>
-      </div>
-    </div>
-  </section>
-
-</div>  <!-- page1 -->
-<div class="page-2 hidden">
-  <div class="results-container">
-    <div class="form-container" id="anchor-1">
-      <form role="form" class="search-form">
-        <fieldset>
-          <input class="search-data search-data" type="search" placeholder="FOR  Restaurants, bars, Joes BBQ" required></input>
-          <input class="search-loc search-loc" type="search" placeholder="IN  Portland, OR" required></input>
-          <button role="button" type="submit" class="search-button">
-            <img src="images/search_logo_1.png" alt="search icon"/>
-          </button>
-        </fieldset>
-      </form>
-    </div>
-    <div class="nav-arrow-container">
-      <img src="images/arrow_right_icon.png" alt="" class="nav-arrow" id="right-arrow" />
-    </div>
-    <div class="results-data">
-
-
-      <!-- this will be created in JS ------------------------------------->
-      <div class="results-data-card" id="repeat">
-        <div class="business-img-container">
-          <img class="business-img" src="https://s3-media1.fl.yelpcdn.com/bphoto/64vw9k5UF0XrFMzYeoKoCQ/o.jpg" alt=""/>
+              <input class="search-data" type="search" placeholder="Restaurants, bars, Joes BBQ" required></input>
+              <input class="search-loc" type="search" placeholder="Portland, OR" required></input>
+              <div class="search-button-container">
+                <button role="button" type="submit" class="search-button">
+                  <img src="images/search_logo_2.png" alt="search icon"/>
+                </button>
+              </div>
+            </fieldset>
+          </form>
         </div>
-        <div class="business-list-details">
-          <p class="business business-name">Podnahs</p>
-          <p class="business business-desc">A home town BBQ spot</p>
-
-            <img class="business business-rating-img" src="" alt="rating stars"/>
-
-            <a class="business business-review-qty">117 reviews</a>
-
-            <a class="business business-more">more...</a>
-
-          <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
-        </div>
-
       </div>
-      <!-- this will be created in JS -------------------------------------->
+      <section role="region">
+        <div class="info-sec left" id="anchor-travel">
+          <div class="info-sec-img">
+            <img src="images/find.jpg" alt="travel to a city" class="instructions" />
+          </div>
+          <div class="info-sec-text">
+            <h1>Pick a city to travel to</h1>
+            <p>First enter the city & state you're interested in visiting</p>
+          </div>
+        </div>
+        <div class="info-sec right" id="anchor-explore">
+          <div class="info-sec-img">
+            <img src="images/go.jpg" alt="do things" class="instructions"/>
+          </div>
+          <div class="info-sec-text">
+            <h1>Explore things that interest you</h1>
+            <p>Search for cool things you want to be near. Maybe it's coffee shops or bars or an area with the most tourist attractions</p>
+          </div>
+        </div>
+        <div class="info-sec left" id="anchor-sleep">
+          <div class="info-sec-img">
+            <img src="images/stay.jpg" alt="sleep in the neighborhood" class="instructions" />
+          </div>
+          <div class="info-sec-text">
+            <h1>Find Airbnbs nearby</h1>
+            <p>Once you find the things you want to do, select the Airbnb button to show you all the surrounding Airbnbs. You can refine your Airbnb list from there based on preferences</p>
+          </div>
+        </div>
+      </section>
 
+    </div>  <!-- page1 -->
+    <div class="page-2">
+      <div class="results-container">
+        <div class="form-container" id="anchor-travel">
+          <fieldset>
+            <input class="search-data" type="search" placeholder="Restaurants, bars, Joes BBQ" required></input>
+            <input class="search-loc" type="search" placeholder="Portland, OR" required></input>
+            <div class="search-button-container">
+              <button role="button" type="submit" class="search-button">
+                <img src="images/search_logo_2.png" alt="search icon"/>
+              </button>
+            </div>
+          </fieldset>
+        </div>
+        <div class="nav-arrow-container">
+          <img src="images/arrow_right_icon.png" alt="" class="nav-arrow" id="right-arrow" />
+        </div>
+        <div class="results-data">
 
-    </div>
-    <div class="map-container" id="map">
-    </div>
-  </div>
-  </div> <!-- page2 -->
-  <footer role="contentinfo">
-    <div class="right-footer-bar">
-      <a href="#anchor-1" class="nav-link">Search</a>
-    </div>
-  </footer>
-</main>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfRWcwPCxX3Qn5osEm9oM1AdEzzh-kMzc&callback=initMap" async defer></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="app.js"></script>
+          <!-- this will be created in JS ------------------------------------->
+          <div class="results-data-card" id="repeat">
+            <div class="business-img-container">
+              <img class="business-img" src="https://s3-media1.fl.yelpcdn.com/bphoto/64vw9k5UF0XrFMzYeoKoCQ/o.jpg" alt=""/>
+            </div>
+            <div class="business-list-details">
+              <p class="business business-name">Podnahs</p>
+              <p class="business business-desc">A home town BBQ spot</p>
+              <img class="business business-rating-img" src="" alt="rating stars"/>
+              <a class="business business-review-qty">117 reviews</a>
+              <a class="business business-more">more...</a>
+              <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
+            </div>
+          </div>
+          <!-- this will be created in JS -------------------------------------->
+
+        </div>
+        <div class="map-container" id="map"></div>
+      </div>
+    </div> <!-- page2 -->
+    <footer role="contentinfo">
+      <div class="right-footer-bar">
+        <a href="#anchor-search" class="nav-link">Search</a>
+      </div>
+    </footer>
+  </main>
+  <!-- <script src="https://maps.googleapis.com/maps/apis/js?v=3.exp"></script> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfRWcwPCxX3Qn5osEm9oM1AdEzzh-kMzc&callback=initMap" async defer></script>
+  <script src="app.js" type="text/javascript"></script>
 </body>
 </html>
