@@ -18,6 +18,7 @@ body {
   margin-top: -73px;
   margin-bottom: 50px;
   padding: 75px 15px 30px;
+  border-radius: 0;
 }
 
 .hidden {
@@ -90,7 +91,6 @@ h1 {
 
 .form-container {
   width: 90%;
-  display: inline-block;
 }
 
 fieldset {
@@ -166,7 +166,7 @@ footer {
 
  }
  /* ------------------------ page 2 styling */
-.search-form-2 {
+/* .search-form-2 {
   background-color: #093E84;
 }
 
@@ -175,10 +175,10 @@ footer {
   box-shadow: none;
   padding: 5px;
   margin-top: 6px;
-}
+} */
 
 .nav-arrow-container {
-  background-color: #e06208;
+  background-color: #357EC7;
   display: inline-block;
   width: 30px;
   float: right;
@@ -189,14 +189,16 @@ footer {
   width: 100%;
 }
 
+.results-data {
+  scroll: auto;
+}
  .results-container {
    margin-top: 50px;
  }
 
 .results-data-card {
-  background-color: #C4C4C4;
+  background-color: #F5F5F5;
   margin: 10px;
-  padding: 8px;
 }
 
  .map-container {
@@ -207,16 +209,11 @@ footer {
    height: 100%;
 }
 
-.business-img {
-  width: 40%;
-  float: left;
-}
 
 .business-list-details {
   list-style: none;
-  padding-left: 2px;
-  clear: left;
   margin: 0;
+  padding-left: 130px;
 }
 
 .clearfix::after {
@@ -225,25 +222,36 @@ footer {
     display: table;
 }
 
-.business {
-  padding: 0px 5px;
+.business, .business-review-qty, .business-rating-img, .business-more {
   font-size: 10px;
+  color: #4c4c4c;
 }
 
-li:first-of-type {
-  font-size: 15px;
+.business-img {
+  width: 35%;
+  float: left;
+  padding: 0;
 }
 
-ul li:nth-child(2) {
+ul li:nth-child(1) {
   font-size: 13px;
+  color: black;
 }
 
 /*Getting the rating image and the rating qty to display besides each other*/
+ul li:nth-child(3) {
+  display: inline-block;
+}
 ul li:nth-child(4) {
   display: inline-block;
 }
-ul li:nth-child(5) {
-  display: inline-block;
+
+.airbnb-button {
+  background-color: white;
+  color: #093E84;
+  margin: 5px 0 5px 5px;
+  border: 1px solid #093E84;
+  font-size: 13px;
 }
 
 /* width */
