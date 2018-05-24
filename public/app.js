@@ -1,3 +1,6 @@
+var KEY =
+  "Deo8e9rL-9CU0oDhQDVWUYabFzOr_-5P3Zn9uT4qbMOwhT8Ojmk2Dd3gUYTodekMv9laxFylRlKW0SW0BcPix3vdticOH9dOuhRC4fQPCDyrq5mKm9KqFRddgN8GW3Yx";
+
 for (var i = 0; i < 10; i++) {
   $(".results-data").append($("#repeat").clone());
 }
@@ -8,20 +11,32 @@ function getDataFromYelp(searchTerm, location, callback) {
   const querySettings = {
     url: "https://api.yelp.com/v3/businesses/search",
     data: {
-      term: 'searchTerm',
-      location: 'location',
-      limit: 10,
+      term: searchTerm,
+      location: location
+      //limit: 10
     },
-    dataType: 'json',
-    type: 'GET',
-    success: function(data) {
-      console.log(data);
-      callback();
+    beforeSend: function(request) {
+      request.setRequestHeader("Authorization", "Bearer " + KEY);
     },
-    error: function(error) {console.log(error)},
-    key: "Deo8e9rL-9CU0oDhQDVWUYabFzOr_-5P3Zn9uT4qbMOwhT8Ojmk2Dd3gUYTodekMv9laxFylRlKW0SW0BcPix3vdticOH9dOuhRC4fQPCDyrq5mKm9KqFRddgN8GW3Yx",
+
+    //dataType: "json",
+    // type: "GET",
+    dataType: "jsonp",
+    jsonpCallback: "cb",
+    async: false,
+    cache: true
+    // success: function(data) {
+    //   console.log(data);
+    //   callback();
+    // },
+    // error: function(error) {
+    //   console.log(error);
+    // }
   };
-  $.ajax(querySettings)
+  $.ajax(querySettings);
+}
+function cb() {
+  console.log("asd");
 }
 //
 // //function to render the results to HTML
@@ -44,28 +59,28 @@ function getDataFromYelp(searchTerm, location, callback) {
 // }
 //
 // //function to place data on page
-// function displaySearchData(data) {
-//   // renderQueryResults();
-//  will change the class on Page-1 to hidden and remove that same class from Page-2
-// }
+function displaySearchData(data) {
+  // renderQueryResults();
+  // will change the class on Page-1 to hidden and remove that same class from Page-2
+}
 //
 // //function to make the call to Yelp once the search button has been clicked
 function watchSearchButton() {
-  $('.search-form').submit(function(event) {
+  $(".search-form").submit(function(event) {
     event.preventDefault();
     let queryTarget = $(event.currentTarget);
-    let queryValue = queryTarget.find('.search-data').val();
-    let queryLocation = queryTarget.find('.search-loc').val();
+    let queryValue = queryTarget.find(".search-data").val();
+    let queryLocation = queryTarget.find(".search-loc").val();
     console.log(event);
     console.log(queryValue, queryLocation);
     getDataFromYelp(queryValue, queryLocation, displaySearchData);
-   //  queryValue = "";
-   //  queryLocation = "";
- })
+    //  queryValue = "";
+    //  queryLocation = "";
+  });
 }
 //
 // //document ready function
- $(watchSearchButton);
+$(watchSearchButton);
 // $(initmap); //make sure to remove it from body tag
 //
 // //Obtains the latitude and longitude coordinates for the initMap()
@@ -81,13 +96,13 @@ function watchSearchButton() {
 //
 // //google API required constructor function to create map object and center it
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -34.397, lng: 150.644},
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
     zoom: 10,
     draggable: true,
     zoomControl: true,
     scrollWheel: false,
-    gestureHandling: 'greedy'
+    gestureHandling: "greedy"
   });
 
   // let image='logo.png';
