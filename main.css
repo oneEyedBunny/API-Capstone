@@ -93,7 +93,6 @@ h1 {
 
 .form-container {
   width: 85%;
-  display: inline-block;
 }
 
 fieldset {
@@ -137,28 +136,27 @@ fieldset {
   width: 100%;
 }
 
-.info-sec {
+.info-sec-container {
   padding-top: 30px;
+}
+
+.info-sec {
   text-align: center;
+  padding-bottom: 35px;
 }
 
 .info-sec-text {
-  display: inline-block;
-  width: 80%;
   padding-top: 10px;
 }
 
-.instructions {
+.info-sec-img, .info-sec-text {
   width: 80%;
+  display: inline-block;
 }
 
-/* .left {
-  float: left;
+.instructions-images {
+  width: 100%;
 }
-
-.right {
-  float: right;
-} */
 
 footer {
   background-color: #c4c4c4;
@@ -166,10 +164,7 @@ footer {
   border-radius: 0px;
   text-align: right;
   padding: 8px;
-}
-
-.right-footer-bar a {
-
+  margin-top: 50px;
 }
 
 /* ------------------------ page 2 styling */
@@ -264,22 +259,20 @@ html, body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 25px;
-  height: 100px;
+  width: 15px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  /* background: #f1f1f1; */
+  background: #f1f1f1;
   box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: green; /*#888; */
+  background-color: #888;
 }
 
 /* Handle on hover */
-/* ::-webkit-scrollbar-thumb:hover {
-    background: #555; */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;

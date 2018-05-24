@@ -1,0 +1,90 @@
+/* Non-mobile grid/styling */
+@media only screen and (min-width: 400px) {
+
+  * {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+ .search-data, .search-loc {
+    font-size: 10px;
+ }
+}
+
+@media only screen and (min-width: 500px) {
+
+ .standard-box {
+   width: 75%
+ }
+
+ .search-data, .search-loc {
+    font-size: 11px;
+ }
+
+ .info-sec {
+  overflow: hidden;
+  padding-bottom: 50px;
+}
+
+ .info-sec-img, .info-sec-text {
+   width: 45%;
+ }
+
+ .image-left {
+   margin-left: 35px;
+ }
+
+ .image-right {
+   margin-right: 35px;
+   margin-left: 8px;
+ }
+
+ .left {
+   float: left;
+   display: inline-block;
+ }
+
+ .right {
+   float: right;
+   display: inline-block;
+ }
+}
+
+@media only screen and (min-width: 640px) {
+
+ .standard-box {
+   width: 65%;
+ }
+
+ .search-data, .search-loc {
+    font-size: 12px;
+ }
+}
+
+@media only screen and (min-width: 710px) {
+
+ .standard-box {
+   width: 58%;
+ }
+
+ .search-data, .search-loc {
+    font-size: 13px;
+ }
+
+ .image-left {
+   margin-left: 50px;
+ }
+
+ .image-right {
+   margin-right: 50px;
+   margin-left: 16px;
+ }
+
+ .info-sec-img, .info-sec-text {
+   width: 40%;
+ }
+
+}
