@@ -6,35 +6,26 @@ for (var i = 0; i < 10; i++) {
 }
 let map;
 
-// //creates request object and response for Yelp
-function getDataFromYelp(searchTerm, location, callback) {
-  const querySettings = {
-    url: "https://api.yelp.com/v3/businesses/search",
+function getDataFromYelp(term, location, callback) {
+  const settings = {
+    url: "/yelp",
     data: {
-      term: searchTerm,
-      location: location
-      //limit: 10
+      location,
+      term
     },
-    beforeSend: function(request) {
-      request.setRequestHeader("Authorization", "Bearer " + KEY);
+    dataType: "json",
+    type: "GET",
+    success: function(data) {
+      console.log(data);
+      callback();
     },
-
-    //dataType: "json",
-    // type: "GET",
-    dataType: "jsonp",
-    jsonpCallback: "cb",
-    async: false,
-    cache: true
-    // success: function(data) {
-    //   console.log(data);
-    //   callback();
-    // },
-    // error: function(error) {
-    //   console.log(error);
-    // }
+    error: function(error) {
+      console.log(error);
+    }
   };
-  $.ajax(querySettings);
+  $.ajax(settings);
 }
+
 function cb() {
   console.log("asd");
 }
