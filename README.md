@@ -13,3 +13,7 @@ Thinkful- Async Programming- capstone project
 
 # Stretch Goal:
 1. Get location to auto populate on landing page
+
+Sebastian?
+1. How can I get image to act like fixed but show more of the images
+2. How can I get text to align with image? Vertical-align: middle on image isn't working

@@ -10,14 +10,14 @@ body {
 }
 
 .background-image-container {
-  background: url(images/background_1.jpg) no-repeat center center fixed;
+  background: url(images/background_1.jpg) no-repeat center center;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   margin-top: -73px;
   margin-bottom: 50px;
-  padding: 75px 15px 30px;
+  padding: 75px 15px 80px;
   border-radius: 0;
 }
 
