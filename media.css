@@ -1,0 +1,157 @@
+/* Non-mobile grid/styling */
+@media only screen and (min-width: 400px) {
+
+  * {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .standard-box {
+    width: 77%
+  }
+
+  .background-image-container {
+    padding: 90px 15px 100px;
+  }
+
+  .search-data, .search-loc {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+
+  .background-image-container {
+    padding: 95px 15px 110px;
+  }
+
+  .standard-box {
+    width: 75%
+  }
+
+  .intro-text {
+    padding: 10px;
+  }
+
+  .search-data, .search-loc {
+    font-size: 11px;
+  }
+
+  .info-sec {
+    overflow: hidden;
+    padding-bottom: 50px;
+  }
+
+  .info-sec-img, .info-sec-text {
+    width: 45%;
+  }
+
+  .info-sec-text {
+    padding: 10px;
+  }
+
+  .image-left {
+    margin-left: 35px;
+  }
+
+  .image-right {
+    margin-right: 35px;
+  }
+
+  .left {
+    float: left;
+    display: inline-block;
+  }
+
+  .right {
+    float: right;
+    display: inline-block;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+
+  .standard-box {
+    width: 65%;
+  }
+
+  .background-image-container {
+    padding: 100px 15px 120px;
+  }
+
+
+  .search-data, .search-loc {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+
+  .standard-box {
+    width: 58%;
+  }
+
+  * {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .intro-text {
+    padding: 12px;
+    margin: 110px auto 75px;
+  }
+
+  .search-data, .search-loc {
+    font-size: 13px;
+  }
+
+  .image-left {
+    margin-left: 50px;
+  }
+
+  .image-right {
+    margin-right: 50px;
+  }
+
+  .info-sec-img, .info-sec-text {
+    width: 43%;
+  }
+
+}
+
+@media only screen and (min-width: 950px) {
+
+  .background-image-container {
+    margin-bottom: 100px;
+  }
+
+  .standard-box {
+    width: 55%;
+  }
+
+  * {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .intro-text {
+    padding: 14px;
+    margin: 110px auto 85px;
+  }
+}
+
+@media only screen and (min-width: 1050px) {
+
+  .standard-box {
+    width: 50%;
+  }
+}
