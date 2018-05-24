@@ -41,11 +41,12 @@ function renderQueryResults(results) {
 </div>`
 }
 //
-// Loops through each object in the yelp array data & places it on page2
+// Loops through each object in the yelp array data & places it on page2. Also initiates google map call
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
   const results = data.businesses.map((item, index) =>
   renderQueryResults(item));
+  getLocationCoordinates(data);
   $('.results-data').html(results);
   $('.page-1').addClass("hidden");
   $('.page-2').removeClass("hidden");
@@ -64,21 +65,23 @@ function watchSearchButton() {
   });
 }
 
-// //Obtains the latitude and longitude coordinates for the initMap()
-//function getLocationCoordinates() {
-//
-//}
-//
+//Obtains the latitude and longitude coordinates to populate the map
+function getLocationCoordinates(data) {
+  cost locationResults = data.businesses.map((item, index) =>
+  initMap(item)
+ )
+}
+
 // //displays either the map or the results data depending on which arrow is clicked
 // function clickArrow() {
 //   when the user clicks the right arrow, the listing results will have their class set to hidden
 //   and the map will have it's class of hidden removed
 // }
 //
-// //google API required constructor function to create map object and center it
-function initMap() {
+//google API required constructor function to create map object and center it
+function initMap(item) {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
+    center: ${item.corrdinates},
     zoom: 10,
     draggable: true,
     zoomControl: true,
@@ -88,7 +91,7 @@ function initMap() {
 
   // let image='logo.png';
   // let marker = new google.maps.Marker({
-  //   position: myLatLng,
+  //   position: this.center,
   //   map: map,
   //   icon:image
   // });
