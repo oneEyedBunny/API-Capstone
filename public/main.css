@@ -10,7 +10,7 @@ body {
 }
 
 .background-image-container {
-  background: url(images/background_1.jpg) no-repeat center center;
+  background: url(images/background_1.jpg) no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -136,26 +136,26 @@ fieldset {
   width: 100%;
 }
 
-.info-sec-container {
+ .info-sec-container {
   padding-top: 30px;
 }
 
-.info-sec {
+.info-sec-card {
   text-align: center;
-  padding-bottom: 35px;
+  margin: 10px 10px 30px 10px;;
 }
 
-.info-sec-text {
-  padding-top: 10px;
+.info-sec-image-container {
+  width: 85%;
+  margin: 0 auto;
 }
 
-.info-sec-img, .info-sec-text {
-  width: 80%;
-  display: inline-block;
+.info-sec-image-left, .info-sec-image-right {
+  width: 100%
 }
 
-.instructions-images {
-  width: 100%;
+div[class^="info-sec-text-"] {
+ padding: 30px;
 }
 
 footer {
