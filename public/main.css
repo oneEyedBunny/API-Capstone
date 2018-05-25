@@ -217,12 +217,6 @@ html, body {
   vertical-align: top;
 }
 
-/* .clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-} */
-
 .business {
   font-size: 10px;
   color: #4c4c4c;
