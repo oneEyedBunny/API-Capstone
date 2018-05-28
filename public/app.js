@@ -11,8 +11,6 @@ function watchSearchButton() {
   });
 }
 
-var KEY =
-  "Deo8e9rL-9CU0oDhQDVWUYabFzOr_-5P3Zn9uT4qbMOwhT8Ojmk2Dd3gUYTodekMv9laxFylRlKW0SW0BcPix3vdticOH9dOuhRC4fQPCDyrq5mKm9KqFRddgN8GW3Yx";
 let map;
 const locationArray = [];
 
@@ -23,10 +21,10 @@ function getDataFromYelp(term, location, callback) {
     data: {
       location: location,
       term: term,
-      limit: 2,
+      limit: 2
     },
-    dataType: 'json',
-    type: 'GET',
+    dataType: "json",
+    type: "GET",
     success: callback,
     error: function(error) {
       console.log(error);
@@ -39,21 +37,22 @@ function getDataFromYelp(term, location, callback) {
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
   const results = data.businesses.map((item, index) =>
-  renderQueryResults(item));
+    renderQueryResults(item)
+  );
 
-   // data.forEach(function(business) {
-   //  locationArray.push(`${business.coordinates}`);
-   //  console.log(locationArray);
-   // });
+  // data.forEach(function(business) {
+  //  locationArray.push(`${business.coordinates}`);
+  //  console.log(locationArray);
+  // });
 
-  $('.results-data').html(results);
-  $('.page-1').addClass("hidden");
-  $('.page-2').removeClass("hidden");
+  $(".results-data").html(results);
+  $(".page-1").addClass("hidden");
+  $(".page-2").removeClass("hidden");
 }
 
 //function to render the data results to HTML
 function renderQueryResults(results) {
- return `
+  return `
 <div class="results-data-card" id="repeat">
   <div class="business-img-container">
     <img class="business-img" src="${results.image_url}" alt="${results.name}"/>
@@ -63,31 +62,33 @@ function renderQueryResults(results) {
     <p class="business business-desc">${results.location.address1}</p>
     <p class="business business-phone">${results.display_phone}</p>
     <span class="business business-rating-qty">${results.rating}</span>
-    <span class="business business-rating-stars" onload="createStarRating(${results.rating});"></span>
+    <span class="business business-rating-stars" onload="createStarRating(${
+      results.rating
+    });"></span>
     <a class="business business-review-qty">${results.review_count} reviews</a>
     <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
   </div>
-</div>`
+</div>`;
 }
 //<img class="business business-rating-stars" onload="this.onload=null; this.src=createStarRating(${results.rating});" src="" alt="rating stars"/>
 
-
 // takes the rating and rounds it to the nearest half, then fills whole stars and half stars and empty stars using a fontawesome CDN
 function createStarRating(rating) {
-  let roundedRating = (Math.round(rating * 2) / 2);
+  let roundedRating = Math.round(rating * 2) / 2;
   let yellowStars = roundedRating;
-  let whiteStars = 5 - roundedRating
-   console.log(yellowStars);
-   console.log(whiteStars);
+  let whiteStars = 5 - roundedRating;
+  console.log(yellowStars);
+  console.log(whiteStars);
 
-  output = '<div title="'+rating+'">';
+  output = '<div title="' + rating + '">';
   output += '<i class="fa fa-star" style="color: gold;">'.repeat(yellowStars);
-  output += '<i class="fa fa-star-half-o" style="color: gold;">'.repeat(whiteStars);
+  output += '<i class="fa fa-star-half-o" style="color: gold;">'.repeat(
+    whiteStars
+  );
   output += '<i class="fa fa-star-o" style="color: gold;">'.repeat(whiteStars);
   //return output + '</div>';
-  $('.business-rating-stars').text = output;
+  $(".business-rating-stars").text = output;
 }
-
 
 //Obtains the latitude and longitude coordinates to populate the map
 // function getLocationCoordinates(data) {
@@ -99,7 +100,7 @@ function createStarRating(rating) {
 //google API required constructor function to create map object and center it
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: 45.5518025, lng: -122.6559189},
+    center: { lat: 45.5518025, lng: -122.6559189 },
     zoom: 10,
     draggable: true,
     zoomControl: true,
@@ -138,28 +139,22 @@ function initMap() {
 //  </div>
 // </div>`
 //}
+function arrowButtonListeners() {
+  //displays either the map or the results data depending on which arrow is clicked
+  $("#right-arrow").click(function() {
+    $(".results-container").hide(); // need to add some transition smoothness here
+    $("#left-arrow").removeClass("hidden");
+  });
 
-
-
-
-
-//displays either the map or the results data depending on which arrow is clicked
-$('#right-arrow').click(function() {
-  $('.results-container').addClass('hidden'); // need to add some transition smoothness here
-  $('.map-container').removeClass('hidden');
-  $('#left-arrow').removeClass('hidden');
-})
-
-$('#left-arrow').click(function() {
-  $('.map-container').addClass('hidden'); // need to add some transition smoothness here
-  $('.results-container').removeClass('hidden');
-  $('#left-arrow').addClass('hidden');
-})
-
-
-
-
+  $("#left-arrow").click(function() {
+    $(".results-container").show();
+    $("#left-arrow").addClass("hidden");
+  });
+}
 
 //document ready functions
-$(watchSearchButton);
-$(initmap); //removed it from body tag>> onload="initMap()"
+$(function() {
+  // init jQuery stuff here... Listeners
+  watchSearchButton();
+  arrowButtonListeners();
+});
