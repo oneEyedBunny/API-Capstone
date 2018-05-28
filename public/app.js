@@ -41,7 +41,7 @@ function displaySearchData(data) {
   );
 
   data.businesses.forEach(function(business) {
-    createMarker(businesses)
+    createMarker(businesses);
   });
 
   $(".results-data").html(results);
@@ -116,10 +116,10 @@ function createMarker(businesses) {
     },
     map: map,
     title: businesses.name,
-    icon: 'images/map_marker.png',
+    icon: "images/map_marker.png",
     content: createMapDetailBox(businesses)
   });
-
+}
 // Creates box on map with business info
 //function createMapDetailBox(businesses) {
 //return `
