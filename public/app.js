@@ -41,10 +41,11 @@ function displaySearchData(data) {
   const results = data.businesses.map((item, index) =>
   renderQueryResults(item));
 
-  USE A FOR EACH AND SOME COMBO OF KEYS FOR TO GET THE VALUE OUT OF THE OBJECT
-  locationArray.push(data.businesses.coordinates);
-  console.log(locationArray);
-  //getLocationCoordinates(locationArray);
+   // data.forEach(function(business) {
+   //  locationArray.push(`${business.coordinates}`);
+   //  console.log(locationArray);
+   // });
+
   $('.results-data').html(results);
   $('.page-1').addClass("hidden");
   $('.page-2').removeClass("hidden");
@@ -90,7 +91,7 @@ function createStarRating(rating) {
 
 //Obtains the latitude and longitude coordinates to populate the map
 // function getLocationCoordinates(data) {
-//   cost locationResults = data.businesses.map((item, index) =>
+//
 //   initMap(item)
 //  )
 // }
@@ -116,10 +117,27 @@ function initMap() {
 //     map: map,
 //     title: businesses.name,
 //     icon: 'images/map_marker.png',
-//     //content: renderContentString(business)
+//     content: createMapDetailBox()
 //   });
 
-
+// Creates box on map with business info
+//function createMapDetailBox() {
+//return `
+// <div class="results-data-card" id="repeat">
+//  <div class="business-img-container">
+//    <img class="business-img" src="${results.image_url}" alt="${results.name}"/>
+//  </div>
+//  <div class="business-list-details">
+//    <p class="business business-name">${results.name}</p>
+//    <p class="business business-desc">${results.location.address1}</p>
+//    <p class="business business-phone">${results.display_phone}</p>
+//    <span class="business business-rating-qty">${results.rating}</span>
+//    <span class="business business-rating-stars" onload="createStarRating(${results.rating});"></span>
+//    <a class="business business-review-qty">${results.review_count} reviews</a>
+//    <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
+//  </div>
+// </div>`
+//}
 
 
 
@@ -144,5 +162,4 @@ $('#left-arrow').click(function() {
 
 //document ready functions
 $(watchSearchButton);
-//$(initmap); //removed it from body tag>> onload="initMap()"
-// google.maps.event.addDomListner(window, 'load', initMap);
+$(initmap); //removed it from body tag>> onload="initMap()"

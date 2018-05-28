@@ -18,7 +18,7 @@
   }
 
   .search-data, .search-loc {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 
@@ -37,7 +37,7 @@
   }
 
   .search-data, .search-loc {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .info-sec-card {
@@ -63,6 +63,21 @@
     float: right;
     display: inline-block;
   }
+
+  .results-container {
+    width: 355px;
+    display:inline-block;
+    z-index: 1;
+  }
+
+  #map {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+
+
 }
 
 @media only screen and (min-width: 600px) {
@@ -84,7 +99,7 @@
   }
 
   .search-data, .search-loc {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -108,25 +123,13 @@
   }
 
   .search-data, .search-loc {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .info-sec-card {
    width: 95%;
    padding-bottom: 45px;
   }
-
-  .results-data {
-    width: 45%;
-    display:inline-block;
-  }
-
-  #map {
-    width: 53%;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
- }
 }
 
 @media only screen and (min-width: 950px) {
