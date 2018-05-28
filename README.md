@@ -6,7 +6,6 @@ Thinkful- Async Programming- capstone project
 1. Page-1- search footer anchor is not centered on page when clicked
 1. Page-1- search icon is jacked
 1. Page-2- scroll bar is not formatting correctly on mobile version, thumb color, width, height, etc
-1. Page-2- media queries not completed
 1. Page-2- image needs to be centered in results div
 1. Page-2- adjust arrow button to have map icon
 
@@ -14,10 +13,6 @@ Thinkful- Async Programming- capstone project
 
 1. Get location to auto populate on landing page
 
-Sebastian?
-
-1. How can I get image to act like fixed but show more of the images
-1. How can I get text to align with image? Vertical-align: middle on image isn't working
 
 # TO RUN THIS
 
