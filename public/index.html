@@ -7,8 +7,9 @@
   <link href="main.css" rel="stylesheet" type="text/css" />
   <link href="media.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
-<body>
+<body onload="initMap()">
   <nav role="navigation">
     <div class="left-nav-bar">
       <img src="images/logo_final.png" id="logo"/>
@@ -36,7 +37,7 @@
               <input class="search-loc" name="search-loc" type="search" placeholder="Portland, OR" required></input>
               <div class="search-button-container">
                 <button role="button" type="submit" class="search-button">
-                  <img src="images/search_logo_2.png" alt="search icon"/>
+                  <img src="images/search_logo_1.png" alt="search icon"/>
                 </button>
               </div>
             </fieldset>
@@ -77,17 +78,20 @@
     <div class="page-2 hidden">
       <div class="results-container">
         <div class="form-container" id="anchor-travel">
+          <form role="form" class="search-form">
           <fieldset>
             <input class="search-data" type="search" placeholder="Restaurants, bars, Joes BBQ" required></input>
             <input class="search-loc" type="search" placeholder="Portland, OR" required></input>
             <div class="search-button-container">
               <button role="button" type="submit" class="search-button">
-                <img src="images/search_logo_2.png" alt="search icon"/>
+                <img src="images/search_logo_1.png" alt="search icon"/>
               </button>
             </div>
           </fieldset>
+        <form role="form" class="search-form">
         </div>
         <!-- <div class="nav-arrow-container">
+          <a href='https://www.freepik.com/free-vector/location-icons_908187.htm'></a>
           <img src="images/arrow_right_icon.png" alt="" class="nav-arrow" id="right-arrow" />
         </div> -->
         <div class="results-data">

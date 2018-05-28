@@ -10,7 +10,7 @@ body {
 }
 
 .background-image-container {
-  background: url(images/background_1.jpg) no-repeat center center;
+  background: url(images/background_1.jpg) no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -122,7 +122,6 @@ fieldset {
   width: 8%;
   background-color: white;
   margin-left: -4px;
-  vertical-align: middle;
   border-radius: 0;
   box-shadow: 5px 5px 5px #888888;
 }
@@ -130,10 +129,12 @@ fieldset {
 .search-button {
   border-radius: 0px;
   padding: 0px;
+  width: 100%;
 }
 
 .search-button img {
   width: 100%;
+  object-fit: contain;
 }
 
 .info-sec-container {
@@ -217,12 +218,6 @@ html, body {
   vertical-align: top;
 }
 
-/* .clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-} */
-
 .business {
   font-size: 10px;
   color: #4c4c4c;
@@ -242,9 +237,13 @@ html, body {
   color: black;
 }
 
-.business-more {
-  display: block
+.business-rating-stars {
+  width: 50px;
 }
+
+.business-rating-qty {
+   color: orange;
+ }
 
 .airbnb-button {
   background-color: white;

@@ -1,9 +1,6 @@
 var KEY =
   "Deo8e9rL-9CU0oDhQDVWUYabFzOr_-5P3Zn9uT4qbMOwhT8Ojmk2Dd3gUYTodekMv9laxFylRlKW0SW0BcPix3vdticOH9dOuhRC4fQPCDyrq5mKm9KqFRddgN8GW3Yx";
 
-// for (var i = 0; i < 10; i++) {
-//   $(".results-data").append($("#repeat").clone());
-// }
 let map;
 function getDataFromYelp(term, location, callback) {
   const settings = {
@@ -32,21 +29,23 @@ function renderQueryResults(results) {
   </div>
   <div class="business-list-details">
     <p class="business business-name">${results.name}</p>
-    <p class="business business-desc">${results.alias}</p>
-    <img class="business business-rating-img" src="${results.rating}" alt="rating stars"/>
-    <a class="business business-review-qty">${results.review_count}</a>
-    <a class="business business-more">more...</a>
+    <p class="business business-desc">${results.location.address1}</p>
+    <p class="business business-phone">${results.display_phone}</p>
+    <span class="business business-rating-qty">${results.rating}</span>
+    <span class="business business-rating-stars" onload="createStarRating(${results.rating});"></span>
+    <a class="business business-review-qty">${results.review_count} reviews</a>
     <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
   </div>
 </div>`
 }
-//
+
+//<img class="business business-rating-stars" onload="this.onload=null; this.src=createStarRating(${results.rating});" src="" alt="rating stars"/>
 // Loops through each object in the yelp array data & places it on page2. Also initiates google map call
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
   const results = data.businesses.map((item, index) =>
   renderQueryResults(item));
-  getLocationCoordinates(data);
+  //getLocationCoordinates(data);
   $('.results-data').html(results);
   $('.page-1').addClass("hidden");
   $('.page-2').removeClass("hidden");
@@ -66,11 +65,11 @@ function watchSearchButton() {
 }
 
 //Obtains the latitude and longitude coordinates to populate the map
-function getLocationCoordinates(data) {
-  cost locationResults = data.businesses.map((item, index) =>
-  initMap(item)
- )
-}
+// function getLocationCoordinates(data) {
+//   cost locationResults = data.businesses.map((item, index) =>
+//   initMap(item)
+//  )
+// }
 
 // //displays either the map or the results data depending on which arrow is clicked
 // function clickArrow() {
@@ -79,9 +78,9 @@ function getLocationCoordinates(data) {
 // }
 //
 //google API required constructor function to create map object and center it
-function initMap(item) {
+function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: ${item.corrdinates},
+    center: {lat: 45.5518025, lng: -122.6559189},
     zoom: 10,
     draggable: true,
     zoomControl: true,
@@ -101,3 +100,20 @@ function initMap(item) {
 $(watchSearchButton);
 //$(initmap); //removed it from body tag>> onload="initMap()"
 // google.maps.event.addDomListner(window, 'load', initMap);
+
+
+// takes the rating and rounds it to the nearest half, then fills whole stars and half stars and empty stars using a fontawesome CDN
+function createStarRating(rating) {
+  let roundedRating = (Math.round(rating * 2) / 2);
+  let yellowStars = roundedRating;
+  let whiteStars = 5 - roundedRating
+   console.log(yellowStars);
+   console.log(whiteStars);
+
+  output = '<div title="'+rating+'">';
+  output += '<i class="fa fa-star" style="color: gold;">'.repeat(yellowStars);
+  output += '<i class="fa fa-star-half-o" style="color: gold;">'.repeat(whiteStars);
+  output += '<i class="fa fa-star-o" style="color: gold;">'.repeat(whiteStars);
+  //return output + '</div>';
+  $('.business-rating-stars').text = output;
+}
