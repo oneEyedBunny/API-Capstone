@@ -42,7 +42,8 @@
 
   .info-sec-card {
    overflow: hidden;
-   margin: 50px 20px;
+   margin: auto;
+   padding: 20px;
   }
 
   .info-sec-image-container {
@@ -111,8 +112,21 @@
   }
 
   .info-sec-card {
-   margin: 60px 35px;
+   width: 95%;
+   padding-bottom: 45px;
   }
+
+  .results-data {
+    width: 45%;
+    display:inline-block;
+  }
+
+  #map {
+    width: 53%;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+ }
 }
 
 @media only screen and (min-width: 950px) {
@@ -122,7 +136,7 @@
   }
 
   .standard-box {
-    width: 55%;
+    width: 54%;
   }
 
   * {
@@ -137,11 +151,33 @@
     padding: 14px;
     margin: 110px auto 85px;
   }
+
+  .info-sec-card {
+   width: 88%;
+   padding-bottom: 65px;
+  }
 }
 
 @media only screen and (min-width: 1050px) {
 
   .standard-box {
-    width: 50%;
+    width: 48%;
+  }
+
+  .info-sec-card {
+   width: 80%;
+   padding-bottom: 75px;
+  }
+}
+
+@media only screen and (min-width: 1150px) {
+
+  .standard-box {
+    width: 45%;
+  }
+
+  .info-sec-card {
+   width: 78%;
+   padding-bottom: 100px;
   }
 }

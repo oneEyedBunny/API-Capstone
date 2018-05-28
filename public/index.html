@@ -12,7 +12,7 @@
 <body onload="initMap()">
   <nav role="navigation">
     <div class="left-nav-bar">
-      <img src="images/logo_final.png" id="logo"/>
+      <img src="images/logo_final.png" id="tes-logo"/>
     </div>
     <div class="right-nav-bar">
       <a href="#anchor-travel" class="nav-link">Travel</a>
@@ -35,11 +35,11 @@
             <fieldset>
               <input class="search-data" name="search-data" type="search" placeholder="Restaurants, bars, Joes BBQ" required></input>
               <input class="search-loc" name="search-loc" type="search" placeholder="Portland, OR" required></input>
-              <div class="search-button-container">
+              <!-- <div class="search-button-container"> -->
                 <button role="button" type="submit" class="search-button">
                   <img src="images/search_logo_1.png" alt="search icon"/>
                 </button>
-              </div>
+              <!-- </div> -->
             </fieldset>
           </form>
         </div>
@@ -75,29 +75,28 @@
       </section>
 
     </div>  <!-- page1 -->
+
+
     <div class="page-2 hidden">
       <div class="results-container">
-        <div class="form-container" id="anchor-travel">
+        <div class="form-container form-container-2" id="anchor-travel">
           <form role="form" class="search-form">
           <fieldset>
             <input class="search-data" type="search" placeholder="Restaurants, bars, Joes BBQ" required></input>
             <input class="search-loc" type="search" placeholder="Portland, OR" required></input>
-            <div class="search-button-container">
-              <button role="button" type="submit" class="search-button">
+            <button role="button" type="submit" class="search-button">
                 <img src="images/search_logo_1.png" alt="search icon"/>
-              </button>
-            </div>
+            </button>
           </fieldset>
         <form role="form" class="search-form">
         </div>
-        <!-- <div class="nav-arrow-container">
-          <a href='https://www.freepik.com/free-vector/location-icons_908187.htm'></a>
-          <img src="images/arrow_right_icon.png" alt="" class="nav-arrow" id="right-arrow" />
-        </div> -->
+        <div class="nav-arrow-container">
+          <img src="images/map_icon.png" alt="see results or map" class="nav-arrow" id="right-arrow" />
+        </div>
         <div class="results-data">
 
           <!-- this will be created in JS ------------------------------------->
-          <div class="results-data-card" id="repeat">
+          <!-- <div class="results-data-card" id="repeat">
             <div class="business-img-container">
               <img class="business-img" src="https://s3-media1.fl.yelpcdn.com/bphoto/64vw9k5UF0XrFMzYeoKoCQ/o.jpg" alt=""/>
             </div>
@@ -109,12 +108,15 @@
               <a class="business business-more">more...</a>
               <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
             </div>
-          </div>
+          </div> -->
           <!-- this will be created in JS -------------------------------------->
 
         </div>
-        <div class="map-container" id="map"></div>
       </div>
+        <div class="nav-arrow-container-2">
+          <img src="images/arrow_left_icon.png" alt="see results or map" class="nav-arrow hidden" id="left-arrow" />
+        </div>
+        <div class="map-container hidden" id="map"></div>
     </div> <!-- page2 -->
     <footer role="contentinfo">
       <div class="right-footer-bar">
