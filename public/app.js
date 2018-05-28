@@ -40,10 +40,9 @@ function displaySearchData(data) {
     renderQueryResults(item)
   );
 
-  // data.forEach(function(business) {
-  //  locationArray.push(`${business.coordinates}`);
-  //  console.log(locationArray);
-  // });
+  data.businesses.forEach(function(business) {
+    createMarker(businesses)
+  });
 
   $(".results-data").html(results);
   $(".page-1").addClass("hidden");
@@ -109,31 +108,31 @@ function initMap() {
   });
 }
 
-// function createMarkers(businesses) {
-//   let marker = new google.maps.Marker({
-//     position: {
-//       lat: businesses.coordinates.latitude,
-//       lng: businesses.coordinates.longitude
-//     },
-//     map: map,
-//     title: businesses.name,
-//     icon: 'images/map_marker.png',
-//     content: createMapDetailBox()
-//   });
+function createMarker(businesses) {
+  let marker = new google.maps.Marker({
+    position: {
+      lat: businesses.coordinates.latitude,
+      lng: businesses.coordinates.longitude
+    },
+    map: map,
+    title: businesses.name,
+    icon: 'images/map_marker.png',
+    content: createMapDetailBox(businesses)
+  });
 
 // Creates box on map with business info
-//function createMapDetailBox() {
+//function createMapDetailBox(businesses) {
 //return `
 // <div class="results-data-card" id="repeat">
 //  <div class="business-img-container">
-//    <img class="business-img" src="${results.image_url}" alt="${results.name}"/>
+//    <img class="business-img" src="${businesses.image_url}" alt="${businesses.name}"/>
 //  </div>
 //  <div class="business-list-details">
-//    <p class="business business-name">${results.name}</p>
-//    <p class="business business-desc">${results.location.address1}</p>
-//    <p class="business business-phone">${results.display_phone}</p>
-//    <span class="business business-rating-qty">${results.rating}</span>
-//    <span class="business business-rating-stars" onload="createStarRating(${results.rating});"></span>
+//    <p class="business business-name">${businesses.name}</p>
+//    <p class="business business-desc">${businesses.location.address1}</p>
+//    <p class="business business-phone">${businesses.display_phone}</p>
+//    <span class="business business-rating-qty">${businesses.rating}</span>
+//    <span class="business business-rating-stars" onload="createStarRating(${businesses.rating});"></span>
 //    <a class="business business-review-qty">${results.review_count} reviews</a>
 //    <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
 //  </div>
