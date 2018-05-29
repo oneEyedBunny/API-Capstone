@@ -37,7 +37,7 @@
 
   .search-data,
   .search-loc {
-    font-size: 13px;
+    font-size: 11px;
   }
 
   .info-sec-card {
@@ -64,10 +64,20 @@
     display: inline-block;
   }
 
-  .results-container {
-    width: 355px;
 
+  .results-container {
+    padding-top: 22px;
+    width: 355px;
+    height: 2000px;
     z-index: 1;
+  }
+
+  .business {
+    font-size: 12px;
+  }
+
+  .business-name {
+    font-size: 14px;
   }
 }
 
@@ -87,11 +97,6 @@
   .background-image-container {
     padding: 100px 15px 120px;
   }
-
-  .search-data,
-  .search-loc {
-    font-size: 14px;
-  }
 }
 
 @media only screen and (min-width: 700px) {
@@ -110,11 +115,6 @@
   .intro-text {
     padding: 12px;
     margin: 110px auto 75px;
-  }
-
-  .search-data,
-  .search-loc {
-    font-size: 15px;
   }
 
   .info-sec-card {

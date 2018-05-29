@@ -39,14 +39,14 @@ function displaySearchData(data) {
   const results = data.businesses.map((item, index) =>
     renderQueryResults(item)
   );
-
   data.businesses.forEach(function(business) {
-    createMarker(businesses);
+    createMarker(business);
   });
-
+  initMap(data);
+  console.log(data.region.center);
   $(".results-data").html(results);
-  $(".page-1").addClass("hidden");
-  $(".page-2").removeClass("hidden");
+  $(".page-1").hide();
+  $(".page-2").show();
 }
 
 //function to render the data results to HTML
@@ -89,17 +89,10 @@ function createStarRating(rating) {
   $(".business-rating-stars").text = output;
 }
 
-//Obtains the latitude and longitude coordinates to populate the map
-// function getLocationCoordinates(data) {
-//
-//   initMap(item)
-//  )
-// }
-
 //google API required constructor function to create map object and center it
-function initMap() {
+function initMap(data) {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 45.5518025, lng: -122.6559189 },
+    center: { lat: 45.5518025, lng: -122.6559189 }, /*`${data.region.center}`,*/
     zoom: 10,
     draggable: true,
     zoomControl: true,
@@ -116,13 +109,13 @@ function createMarker(businesses) {
     },
     map: map,
     title: businesses.name,
-    icon: "images/map_marker.png",
-    content: createMapDetailBox(businesses)
+    //content: createMapDetailBox(businesses)
   });
 }
-// Creates box on map with business info
-//function createMapDetailBox(businesses) {
-//return `
+
+//Creates box on map with business info
+// function createMapDetailBox(businesses) {
+// return `
 // <div class="results-data-card" id="repeat">
 //  <div class="business-img-container">
 //    <img class="business-img" src="${businesses.image_url}" alt="${businesses.name}"/>
@@ -133,20 +126,22 @@ function createMarker(businesses) {
 //    <p class="business business-phone">${businesses.display_phone}</p>
 //    <span class="business business-rating-qty">${businesses.rating}</span>
 //    <span class="business business-rating-stars" onload="createStarRating(${businesses.rating});"></span>
-//    <a class="business business-review-qty">${results.review_count} reviews</a>
+//    <a class="business business-review-qty">${businesses.review_count} reviews</a>
 //    <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
 //  </div>
 // </div>`
-//}
+// }
+
+//displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
-  //displays either the map or the results data depending on which arrow is clicked
   $("#right-arrow").click(function() {
-    $(".results-container").hide(); // need to add some transition smoothness here
+    $(".results-container").slideUp(); // need to add some transition smoothness here
+    $('.map-container').removeClass("hidden")
     $("#left-arrow").removeClass("hidden");
   });
 
   $("#left-arrow").click(function() {
-    $(".results-container").show();
+    $(".results-container").slideToggle("slow");
     $("#left-arrow").addClass("hidden");
   });
 }

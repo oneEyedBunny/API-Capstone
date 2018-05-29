@@ -5,8 +5,18 @@
   box-sizing: border-box;
 }
 
+html, body, main, .page-2 {
+   height: 100%; /* ensures google map can render */
+}
+
+html,
 body {
-  margin: 0px;
+  margin: 0;
+  padding: 0; /*may not be needed */
+}
+
+body {
+  margin-top: -20px;
 }
 
 .background-image-container {
@@ -175,18 +185,18 @@ div[class^="info-sec-text-"] {
 }
 
 .nav-arrow-container {
-  background-color: #357ec7;
+  /* background-color: #357ec7; */
   display: inline-block;
-  width: 8%;
+  width: 35px;
   float: right;
-  margin-top: 15px;
+  margin-top: 21px;
 }
 
 .nav-arrow-container-2 {
   background-color: #357ec7;
   display: inline-block;
-  width: 4%;
-  margin-top: 30px;
+  width: 35px;
+  margin-top: 48px; /*33*/
   position: fixed;
   z-index: 1;
 }
@@ -196,6 +206,7 @@ div[class^="info-sec-text-"] {
 }
 
 #left-arrow {
+  width: 25px;
 }
 
 .results-data {
@@ -203,14 +214,16 @@ div[class^="info-sec-text-"] {
 }
 
 .results-container {
-  padding-top: 22px;
+  padding-top: 40px;
+  margin-left: 5px;
   position: fixed;
-  background-color: #deeff5;
-  overflow: auto;
+  background-color: #F5F5F5;
+  overflow: scroll;
+  height: 700px;
 }
 
 .results-data-card {
-  background-color: #f5f5f5;
+  background-color: #e8e8e8;
   margin: 10px 0px 10px 10px;
   width: 95%;
 }
@@ -221,28 +234,11 @@ div[class^="info-sec-text-"] {
   margin-top: 20px;
 }
 
-main,
-.page-2 {
-  height: 100%;
-}
-/* main {
-  top: 0;
-  bottom: 0;
-  position: fixed;
-  right: 0;
-  left: 0;
+/* #map {
+  background-color: green;
+  border: 1px solid red;
 } */
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin-top: -20px;
-}
 .business-list-details {
   margin: 0;
   padding: 10px 2px 10px 10px;
@@ -252,9 +248,14 @@ body {
 }
 
 .business {
-  font-size: 13px;
+  font-size: 10px;
   color: #4c4c4c;
   margin: 0;
+}
+
+.business-name {
+  font-size: 13px;
+  color: black;
 }
 
 .business-img-container {
@@ -265,11 +266,6 @@ body {
 
 .business-img {
   width: 100%;
-}
-
-.business-name {
-  font-size: 15px;
-  color: black;
 }
 
 .business-rating-stars {
@@ -293,7 +289,7 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
 }
 
 /* Track */
@@ -304,15 +300,10 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #3d526d;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-#map {
-  background-color: green;
-  border: 1px solid red;
 }
