@@ -11,9 +11,6 @@ function watchSearchButton() {
   });
 }
 
-let map;
-const locationArray = [];
-
 //request object for Yelp
 function getDataFromYelp(term, location, callback) {
   const settings = {
@@ -21,7 +18,7 @@ function getDataFromYelp(term, location, callback) {
     data: {
       location: location,
       term: term,
-      limit: 2
+      limit: 10
     },
     dataType: "json",
     type: "GET",
@@ -36,6 +33,7 @@ function getDataFromYelp(term, location, callback) {
 // Callback function that loops through each object in the yelp array & places it on page2
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
+  console.log("my lat/lng is", data.region.center);//verifying that lat/lng is here
   const results = data.businesses.map((item, index) =>
     renderQueryResults(item)
   );
@@ -43,7 +41,6 @@ function displaySearchData(data) {
     createMarker(business));
 
   initMap(data);
-  //console.log(data.region.center);//verifying that lat/lng is here
   $(".results-data").html(results);
   $(".page-1").addClass("hidden");
   $(".page-2").removeClass("hidden");
@@ -89,11 +86,16 @@ function createStarRating(rating) {
   $(".business-rating-stars").text = output;
 }
 
+let map;
+let marker;
+
 //google API required constructor function to create map object and center it
 function initMap(data) {
+  let lat = data.region.center.latitude;
+  let lng = data.region.center.longitude;
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 45.5518025, lng: -122.6559189 }, /*`${data.region.center}`,*/
-    zoom: 10,
+    center: { lat: lat, lng: lng },
+    zoom: 10, //15 is street level
     draggable: true,
     zoomControl: true,
     scrollWheel: false,
@@ -101,22 +103,25 @@ function initMap(data) {
   });
 }
 
+//google API constructor for making map markers
 function createMarker(business) {
   // console.log(business);
   // console.log(business.coordinates);
-  let marker = new google.maps.Marker({
+  marker = new google.maps.Marker({
     position: {
       lat: business.coordinates.latitude,
       lng: business.coordinates.longitude
     },
     map: map,
     title: business.name,
-    //content: createMapDetailBox(businesses)
+    content: createMapDetailBox(business)
   });
+  console.log("My marker function ran");
 }
 
 //Creates box on map with business info
-// function createMapDetailBox(businesses) {
+function createMapDetailBox(businesses) {
+  //console.log("createMapDetailBox is running");
 // return `
 // <div class="results-data-card" id="repeat">
 //  <div class="business-img-container">
@@ -129,10 +134,10 @@ function createMarker(business) {
 //    <span class="business business-rating-qty">${businesses.rating}</span>
 //    <span class="business business-rating-stars" onload="createStarRating(${businesses.rating});"></span>
 //    <a class="business business-review-qty">${businesses.review_count} reviews</a>
-//    <button role="button" type="button" class="airbnb-button" "value="${results.location.city}--${results.location.state}-${results.location.zip_code}">Find Airbnb's Nearby</button>
+//    <button role="button" type="button" class="airbnb-button" "value="${businesses.location.city}--${businesses.location.state}-${businesses.location.zip_code}">Find Airbnb's Nearby</button>
 //  </div>
 // </div>`
-// }
+}
 
 //displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
@@ -154,15 +159,15 @@ function findAirbnbs() {
   event.preventDefault;
   console.log("Clicked");
   // let target = event.currentTarget;
-  // console.log("Im the clicked location", target);
- //  window.open();
- // https://www.airbnb.com/s/${loc}/homes
+  // let searchLoc = target.val()
+  // console.log(target);
+  // console.log("Im the clicked location", searchLoc);
+ //  window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
  });
 }
 
-//document ready functions
+//document ready functions for Jquery
 $(function() {
-  // init jQuery stuff here... Listeners
   watchSearchButton();
   arrowButtonListeners();
   findAirbnbs();

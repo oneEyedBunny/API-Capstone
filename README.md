@@ -10,10 +10,13 @@ Thinkful- Async Programming- capstone project
   1. Yelp pic results are different sizes
       *Having difficulty with setting height*
   1. Can't get star rating to display in search results
-  1. Get map to populate with actual search coordinates instead of hardcoded values
-  
+  1. Search results are displaying default of 20 even though my request object has another value
+
+  1. Map markers are not showing
   1. Map box needs to appear with business details when clicked
-  1. Need to add click function for airbnb to take them to airbnb
+
+  1. findAirBnB() click not registering
+  1. findAirBnB needs to be build out to take them to Airbnb
 
 -----------
 
@@ -21,6 +24,7 @@ Thinkful- Async Programming- capstone project
 # Stretch Goal:
 
 1. Get location to auto populate in search field
+1. Leverage AirBnB API to populate results on the map in the existing webpage (not airbnbs).
 
 # TO RUN THIS
 
