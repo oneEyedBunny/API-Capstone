@@ -39,14 +39,14 @@ function displaySearchData(data) {
   const results = data.businesses.map((item, index) =>
     renderQueryResults(item)
   );
-  data.businesses.forEach(function(business) {
-    createMarker(business);
-  });
+  data.businesses.forEach((business) =>
+    createMarker(business));
+
   initMap(data);
-  console.log(data.region.center);
+  //console.log(data.region.center);//verifying that lat/lng is here
   $(".results-data").html(results);
-  $(".page-1").hide();
-  $(".page-2").show();
+  $(".page-1").addClass("hidden");
+  $(".page-2").removeClass("hidden");
 }
 
 //function to render the data results to HTML
@@ -65,7 +65,7 @@ function renderQueryResults(results) {
       results.rating
     });"></span>
     <a class="business business-review-qty">${results.review_count} reviews</a>
-    <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
+    <button role="button" type="button" class="airbnb-button" value="${results.location.city}--${results.location.state}-${results.location.zip_code}">Find Airbnb's Nearby</button>
   </div>
 </div>`;
 }
@@ -101,14 +101,16 @@ function initMap(data) {
   });
 }
 
-function createMarker(businesses) {
+function createMarker(business) {
+  // console.log(business);
+  // console.log(business.coordinates);
   let marker = new google.maps.Marker({
     position: {
-      lat: businesses.coordinates.latitude,
-      lng: businesses.coordinates.longitude
+      lat: business.coordinates.latitude,
+      lng: business.coordinates.longitude
     },
     map: map,
-    title: businesses.name,
+    title: business.name,
     //content: createMapDetailBox(businesses)
   });
 }
@@ -127,7 +129,7 @@ function createMarker(businesses) {
 //    <span class="business business-rating-qty">${businesses.rating}</span>
 //    <span class="business business-rating-stars" onload="createStarRating(${businesses.rating});"></span>
 //    <a class="business business-review-qty">${businesses.review_count} reviews</a>
-//    <button role="button" type="submit" class="airbnb-button" value="">Find Airbnb's Nearby</button>
+//    <button role="button" type="button" class="airbnb-button" "value="${results.location.city}--${results.location.state}-${results.location.zip_code}">Find Airbnb's Nearby</button>
 //  </div>
 // </div>`
 // }
@@ -145,9 +147,23 @@ function arrowButtonListeners() {
   });
 }
 
+//takes you to airbnb site with search results based on location
+function findAirbnbs() {
+  console.log("NOT clicked");
+  $('.airbnb-button').on("click", function(event) {
+  event.preventDefault;
+  console.log("Clicked");
+  // let target = event.currentTarget;
+  // console.log("Im the clicked location", target);
+ //  window.open();
+ // https://www.airbnb.com/s/${loc}/homes
+ });
+}
+
 //document ready functions
 $(function() {
   // init jQuery stuff here... Listeners
   watchSearchButton();
   arrowButtonListeners();
+  findAirbnbs();
 });

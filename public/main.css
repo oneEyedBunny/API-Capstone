@@ -301,3 +301,17 @@ div[class^="info-sec-text-"] {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* corner of vertical/horozontal intersection */
+/* ::-webkit-scrollbar-corner {
+  background: red;
+} */
+
+/* ::-webkit-resizer {
+
+} */
+
+/* .results-footer {
+  background-color: red;
+  height: 10px;
+} */
