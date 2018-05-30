@@ -16,7 +16,7 @@ Thinkful- Async Programming- capstone project
       *footer looks weird*
   1. Need to add ability for next click button in footer to show new results
   1. Get map to populate with actual search coordinates instead of hardcoded values
-  1. Map box needs to appear with business data when clicked
+  1. Map box needs to appear with business details when clicked
   1. Need to add click function for airbnb to take them to airbnb
 
 -----------
