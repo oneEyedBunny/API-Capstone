@@ -134,9 +134,8 @@ function createMarker(businesses) {
 
 //displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
-  $("#right-arrow").click(function() {
-    $(".results-container").slideUp(); // need to add some transition smoothness here
-    $('.map-container').removeClass("hidden")
+  $("#map-arrow").click(function() {
+    $(".results-container").slideUp();
     $("#left-arrow").removeClass("hidden");
   });
 

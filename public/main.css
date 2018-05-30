@@ -185,7 +185,6 @@ div[class^="info-sec-text-"] {
 }
 
 .nav-arrow-container {
-  /* background-color: #357ec7; */
   display: inline-block;
   width: 35px;
   float: right;
@@ -215,11 +214,11 @@ div[class^="info-sec-text-"] {
 
 .results-container {
   padding-top: 40px;
-  margin-left: 5px;
   position: fixed;
   background-color: #F5F5F5;
   overflow: scroll;
-  height: 700px;
+  height: 100%;
+  z-index: 1;
 }
 
 .results-data-card {
@@ -233,11 +232,6 @@ div[class^="info-sec-text-"] {
   width: 100%;
   margin-top: 20px;
 }
-
-/* #map {
-  background-color: green;
-  border: 1px solid red;
-} */
 
 .business-list-details {
   margin: 0;
