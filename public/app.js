@@ -73,18 +73,16 @@ function renderQueryResults(results) {
 // takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
 function createStarRating(rating) {
   let fullStars = Math.floor(rating);
-  let halfStars = (rating % 1 < 1) ? 1 : 0;
+  let halfStars = (rating % 1 < 1 && rating % 1 > 0) ? 1 : 0;
   let emptyStars = 5 - (fullStars + halfStars);
-  // console.log("full stars =", fullStars);
-  // console.log("half stars =", halfStars);
-  // console.log("empty stars =", emptyStars);
-
   output = '<i class="fa fa-star" style="color: gold;"></i>'.repeat(fullStars);
   output += '<i class="fa fa-star-half-o" style="color: gold;"></i>'.repeat(halfStars);
   output += '<i class="fa fa-star-o" style="color: gold;"></i>'.repeat(emptyStars);
   return output;
 }
 //return output + '</div>';
+
+
 //google API required constructor function to create map object and center it
 function initMap(data) {
   let lat = data.region.center.latitude;
