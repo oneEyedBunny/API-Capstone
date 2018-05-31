@@ -71,7 +71,6 @@ function renderQueryResults(results) {
   </div>
 </div>`;
 }
-//<img class="business business-rating-stars" onload="this.onload=null; this.src=createStarRating(${results.rating});" src="" alt="rating stars"/>
 
 // takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
 function createStarRating(rating) {
@@ -87,7 +86,6 @@ function createStarRating(rating) {
   );
   return output;
 }
-//return output + '</div>';
 
 //google API required constructor function to create map object and center it
 function initMap() {
@@ -121,10 +119,8 @@ function createMarker(business) {
   return marker;
 }
 
-//Creates box on map with business info
+//Creates box on map markers with business info
 function createMapDetailBox(businesses) {
-  let starRating = createStarRating(businesses.rating);
-  console.log("createMapDetailBox is running");
   return `
     <div class="results-data-card" id="repeat">
     <div class="business-img-container">
@@ -137,7 +133,9 @@ function createMapDetailBox(businesses) {
     <p class="business business-desc">${businesses.location.address1}</p>
     <p class="business business-phone">${businesses.display_phone}</p>
     <span class="business business-rating-qty">${businesses.rating}</span>
-    <span class="business business-stars">${starRating}"></span>
+    <span class="business business-stars">${createStarRating(
+      results.rating
+    )}</span>
     <a class="business business-review-qty">${
       businesses.review_count
     } reviews</a>

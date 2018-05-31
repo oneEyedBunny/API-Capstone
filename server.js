@@ -21,7 +21,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-// http://localhost:3000/asd?latitude=40.712775&longitude=-74.005973
 app.get("/yelp", function(req, res) {
   console.log(req.query);
   console.log(req.params);

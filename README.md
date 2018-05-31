@@ -4,12 +4,11 @@ Thinkful- Async Programming- capstone project
 # Pending:
 
 ## Page 1
-  1. search footer anchor is not centered on page when clicked, due to margin-top. Add footer back
+  1. search footer anchor is not centered on page when clicked, due to margin-top
 
 ## Page 2
-  1. Yelp pic needs margin
-  1. Adjust formatting on box details in map
-  1. Adjust animation on click icons
+  1. Adjust formatting on box details on map markers
+  1. Adjust animation on map click icons
 
 -----------
 
