@@ -12,11 +12,8 @@ Thinkful- Async Programming- capstone project
   1. Can't get star rating to display in search results
   1. Search results are displaying default of 20 even though my request object has another value
 
-  1. Map markers are not showing
   1. Map box needs to appear with business details when clicked
 
-  1. findAirBnB() click not registering
-  1. findAirBnB needs to be build out to take them to Airbnb
 
 -----------
 

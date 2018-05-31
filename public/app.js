@@ -1,3 +1,6 @@
+let map;
+let marker;
+
 // Makes the call to Yelp once the search button has been clicked, resets the query values to empty
 function watchSearchButton() {
   $(".search-form").submit(function(event) {
@@ -82,19 +85,16 @@ function createStarRating(rating) {
   );
   output += '<i class="fa fa-star-o" style="color: gold;">'.repeat(whiteStars);
   //return output + '</div>';
-  $(".business-rating-stars").text = output;
+  $('.business-rating-stars').text = output;
 }
-
-let map;
-let marker;
 
 //google API required constructor function to create map object and center it
 function initMap(data) {
   let lat = data.region.center.latitude;
   let lng = data.region.center.longitude;
-  map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: lat, lng: lng },
-    zoom: 10, //15 is street level
+    zoom: 10,
     draggable: true,
     zoomControl: true,
     scrollWheel: false,
@@ -111,54 +111,65 @@ function createMarker(business) {
     },
     map: map,
     title: business.name,
-    content: createMapDetailBox(business)
+    //content: createMapDetailBox(business)
   });
 }
 
 //Creates box on map with business info
 function createMapDetailBox(businesses) {
-  //console.log("createMapDetailBox is running");
-// return `
-// <div class="results-data-card" id="repeat">
-//  <div class="business-img-container">
-//    <img class="business-img" src="${businesses.image_url}" alt="${businesses.name}"/>
-//  </div>
-//  <div class="business-list-details">
-//    <p class="business business-name">${businesses.name}</p>
-//    <p class="business business-desc">${businesses.location.address1}</p>
-//    <p class="business business-phone">${businesses.display_phone}</p>
-//    <span class="business business-rating-qty">${businesses.rating}</span>
-//    <span class="business business-rating-stars" onload="createStarRating(${businesses.rating});"></span>
-//    <a class="business business-review-qty">${businesses.review_count} reviews</a>
-//    <button role="button" type="button" class="airbnb-button" "value="${businesses.location.city}--${businesses.location.state}-${businesses.location.zip_code}">Find Airbnb's Nearby</button>
-//  </div>
-// </div>`
+  console.log("createMapDetailBox is running");
+    return `
+    <div class="results-data-card" id="repeat">
+    <div class="business-img-container">
+    <img class="business-img" src="${businesses.image_url}" alt="${businesses.name}"/>
+    </div>
+    <div class="business-list-details">
+    <p class="business business-name">${businesses.name}</p>
+    <p class="business business-desc">${businesses.location.address1}</p>
+    <p class="business business-phone">${businesses.display_phone}</p>
+    <span class="business business-rating-qty">${businesses.rating}</span>
+    <span class="business business-rating-stars" onload="createStarRating(${businesses.rating});"></span>
+    <a class="business business-review-qty">${businesses.review_count} reviews</a>
+    <button role="button" type="button" class="airbnb-button" "value="${businesses.location.city}--${businesses.location.state}-${businesses.location.zip_code}">Find Airbnb's Nearby</button>
+    </div>
+    </div>`
 }
+
+//creates
+//function markerActions(){
+// marker.addListener('click', function() {
+//   need to render it somewhere..where?
+// })
+// marker.addListener('mouseover', function() {
+//  shows the box
+//  })
+// marker.addListener('mouseout', function() {
+//  hides the box
+//})
+//}
+
+
 
 //displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
-  $("#map-arrow").click(function() {
-    $(".results-container").slideUp();
-    $("#left-arrow").removeClass("hidden");
+  $('#map-arrow').click(function() {
+    $('.results-container').slideUp();
+    $('#left-arrow').removeClass('hidden');
   });
 
-  $("#left-arrow").click(function() {
-    $(".results-container").slideToggle("slow");
-    $("#left-arrow").addClass("hidden");
+  $('#left-arrow').click(function() {
+    $('.results-container').slideToggle('slow');
+    $('#left-arrow').addClass('hidden');
   });
 }
 
 //takes you to airbnb site with search results based on location
 function findAirbnbs() {
-  console.log("NOT clicked");
-  $('.airbnb-button').on("click", function(event) {
+  $('.results-data').on('click', '.airbnb-button', function(event) {
   event.preventDefault;
-  console.log("Clicked");
-  // let target = event.currentTarget;
-  // let searchLoc = target.val()
-  // console.log(target);
-  // console.log("Im the clicked location", searchLoc);
- //  window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
+  let searchLoc = $(this).attr("value");
+  console.log("Im the clicked location", searchLoc);
+  window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
  });
 }
 
@@ -167,4 +178,5 @@ $(function() {
   watchSearchButton();
   arrowButtonListeners();
   findAirbnbs();
+  //markerActions();
 });
