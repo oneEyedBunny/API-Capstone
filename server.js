@@ -28,7 +28,8 @@ app.get("/yelp", function(req, res) {
   client
     .search({
       location: req.query.location,
-      term: req.query.term
+      term: req.query.term,
+      limit: 20
     })
     .then(response => {
       console.log(response.jsonBody);

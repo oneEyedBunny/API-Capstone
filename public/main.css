@@ -264,6 +264,7 @@ div[class^="info-sec-text-"] {
 
 .business-rating-stars {
   width: 50px;
+  display: inline-block;;
 }
 
 .business-rating-qty {

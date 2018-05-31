@@ -21,7 +21,7 @@ function getDataFromYelp(term, location, callback) {
     data: {
       location: location,
       term: term,
-      limit: 10
+      limit: 20
     },
     dataType: "json",
     type: "GET",
@@ -50,6 +50,8 @@ function displaySearchData(data) {
 
 //function to render the data results to HTML
 function renderQueryResults(results) {
+  let starRating = createStarRating(results.rating);
+  console.log(starRating);
   return `
 <div class="results-data-card" id="repeat">
   <div class="business-img-container">
@@ -60,9 +62,7 @@ function renderQueryResults(results) {
     <p class="business business-desc">${results.location.address1}</p>
     <p class="business business-phone">${results.display_phone}</p>
     <span class="business business-rating-qty">${results.rating}</span>
-    <span class="business business-rating-stars" onload="createStarRating(${
-      results.rating
-    });"></span>
+    <span class="business business-rating-stars">${starRating}</span>
     <a class="business business-review-qty">${results.review_count} reviews</a>
     <button role="button" type="button" class="airbnb-button" value="${results.location.city}--${results.location.state}-${results.location.zip_code}">Find Airbnb's Nearby</button>
   </div>
@@ -79,13 +79,13 @@ function createStarRating(rating) {
   console.log(whiteStars);
 
   output = '<div title="' + rating + '">';
-  output += '<i class="fa fa-star" style="color: gold;">'.repeat(yellowStars);
-  output += '<i class="fa fa-star-half-o" style="color: gold;">'.repeat(
+  output += '<i class="fa fa-star" style="color: gold;"></i>'.repeat(yellowStars);
+  output += '<i class="fa fa-star-half-o" style="color: gold;"></i>'.repeat(
     whiteStars
   );
-  output += '<i class="fa fa-star-o" style="color: gold;">'.repeat(whiteStars);
-  //return output + '</div>';
-  $('.business-rating-stars').text = output;
+  output += '<i class="fa fa-star-o" style="color: gold;"></i>'.repeat(whiteStars);
+  return output + '</div>';
+  // $('.business-rating-stars').text = output;
 }
 
 //google API required constructor function to create map object and center it
