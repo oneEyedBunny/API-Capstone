@@ -33,14 +33,13 @@ function getDataFromYelp(term, location, callback) {
 // Callback function that loops through each object in the yelp array & places it on page2
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
-  console.log("my lat/lng is", data.region.center);//verifying that lat/lng is here
   const results = data.businesses.map((item, index) =>
     renderQueryResults(item)
   );
+  initMap(data);
   data.businesses.forEach((business) =>
     createMarker(business));
 
-  initMap(data);
   $(".results-data").html(results);
   $(".page-1").addClass("hidden");
   $(".page-2").removeClass("hidden");
@@ -105,8 +104,6 @@ function initMap(data) {
 
 //google API constructor for making map markers
 function createMarker(business) {
-  // console.log(business);
-  // console.log(business.coordinates);
   marker = new google.maps.Marker({
     position: {
       lat: business.coordinates.latitude,
@@ -116,7 +113,6 @@ function createMarker(business) {
     title: business.name,
     content: createMapDetailBox(business)
   });
-  console.log("My marker function ran");
 }
 
 //Creates box on map with business info
