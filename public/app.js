@@ -1,5 +1,5 @@
 let map;
-let marker;
+let infoWindow;
 
 // Makes the call to Yelp once the search button has been clicked, resets the query values to empty
 function watchSearchButton() {
@@ -95,11 +95,12 @@ function initMap(data) {
     scrollWheel: false,
     gestureHandling: "greedy"
   });
+  infoWindow = new google.maps.InfoWindow({ content: ''})
 }
 
 //google API constructor for making map markers
 function createMarker(business) {
-  marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
     position: {
       lat: business.coordinates.latitude,
       lng: business.coordinates.longitude
@@ -108,11 +109,17 @@ function createMarker(business) {
     title: business.name,
     //content: createMapDetailBox(business)
   });
+
+  marker.addListener('click', function() {
+    infoWindow.open(map, marker);
+    infoWindow.setContent(createMapDetailBox(business));
+  })
+
 }
 
 //Creates box on map with business info
 function createMapDetailBox(businesses) {
-  let starRating = createStarRating(results.rating);
+  let starRating = createStarRating(businesses.rating);
   console.log("createMapDetailBox is running");
     return `
     <div class="results-data-card" id="repeat">
@@ -132,19 +139,17 @@ function createMapDetailBox(businesses) {
 }
 
 //creates
-//function markerActions(){
-// marker.addListener('click', function() {
-//   need to render it somewhere..where?
-// })
-// marker.addListener('mouseover', function() {
-//  shows the box
+// function mapMarkerListners(){
+//   marker.addListener('click', function() {
+//     need to render it somewhere..where?
+//   })
+//   marker.addListener('mouseover', function() {
+//    shows the box
+//    })
+//   marker.addListener('mouseout', function() {
+//    hides the box
 //  })
-// marker.addListener('mouseout', function() {
-//  hides the box
-//})
-//}
-
-
+// }
 
 //displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
@@ -174,5 +179,5 @@ $(function() {
   watchSearchButton();
   arrowButtonListeners();
   findAirbnbs();
-  //markerActions();
+  //mapMarkerListners();
 });

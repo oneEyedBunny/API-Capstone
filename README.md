@@ -7,11 +7,9 @@ Thinkful- Async Programming- capstone project
   1. search footer anchor is not centered on page when clicked, due to margin-top. Add footer back
 
 ## Page 2
-  1. Yelp pic results are different sizes
-      *Having difficulty with setting height* Need to set it to set values then toggle the formatting around it
-  1. Stars function is slightly off. Also need space after rating/stars
-  1. Map box needs to appear with business details when clicked
-
+  1. Yelp pic needs margin
+  1. Adjust formatting on box details in map
+  1. Adjust animation on click icons
 
 -----------
 
@@ -19,7 +17,6 @@ Thinkful- Async Programming- capstone project
 # Stretch Goal:
 
 1. Get location to auto populate in search field
-1. Leverage AirBnB API to populate results on the map in the existing webpage (not airbnbs).
 
 # TO RUN THIS
 

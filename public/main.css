@@ -254,7 +254,7 @@ div[class^="info-sec-text-"] {
 
 .business-img-container {
   width: 35%;
-  height: 80px;
+  height: 90px;
   padding: 0;
   display: inline-block;
 }
@@ -262,6 +262,7 @@ div[class^="info-sec-text-"] {
 .business-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .business-stars {
@@ -275,6 +276,7 @@ div[class^="info-sec-text-"] {
 .business-review-qty {
   display: inline-block;
   color: #093e84;
+  margin-left: 2px;
 }
 
 .airbnb-button {
