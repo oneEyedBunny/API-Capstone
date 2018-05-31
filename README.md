@@ -9,7 +9,7 @@ Thinkful- Async Programming- capstone project
 ## Page 2
   1. Yelp pic results are different sizes
       *Having difficulty with setting height* Need to set it to set values then toggle the formatting around it
-  1. Stars aren't displaying properly (inline & qty of stars)
+  1. Stars function is slightly off. Also need space after rating/stars
   1. Map box needs to appear with business details when clicked
 
 

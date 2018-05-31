@@ -254,21 +254,27 @@ div[class^="info-sec-text-"] {
 
 .business-img-container {
   width: 35%;
+  height: 80px;
   padding: 0;
   display: inline-block;
 }
 
 .business-img {
   width: 100%;
+  height: 100%;
 }
 
-.business-rating-stars {
+.business-stars {
   width: 50px;
-  display: inline-block;;
 }
 
 .business-rating-qty {
-  color: orange;
+  color: gold;
+}
+
+.business-review-qty {
+  display: inline-block;
+  color: #093e84;
 }
 
 .airbnb-button {

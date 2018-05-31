@@ -51,7 +51,7 @@ function displaySearchData(data) {
 //function to render the data results to HTML
 function renderQueryResults(results) {
   let starRating = createStarRating(results.rating);
-  console.log(starRating);
+  //console.log("My starRating is", starRating);
   return `
 <div class="results-data-card" id="repeat">
   <div class="business-img-container">
@@ -62,7 +62,7 @@ function renderQueryResults(results) {
     <p class="business business-desc">${results.location.address1}</p>
     <p class="business business-phone">${results.display_phone}</p>
     <span class="business business-rating-qty">${results.rating}</span>
-    <span class="business business-rating-stars">${starRating}</span>
+    <span class="business business-stars">${starRating}</span>
     <a class="business business-review-qty">${results.review_count} reviews</a>
     <button role="button" type="button" class="airbnb-button" value="${results.location.city}--${results.location.state}-${results.location.zip_code}">Find Airbnb's Nearby</button>
   </div>
@@ -70,24 +70,21 @@ function renderQueryResults(results) {
 }
 //<img class="business business-rating-stars" onload="this.onload=null; this.src=createStarRating(${results.rating});" src="" alt="rating stars"/>
 
-// takes the rating and rounds it to the nearest half, then fills whole stars and half stars and empty stars using a fontawesome CDN
+// takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
 function createStarRating(rating) {
-  let roundedRating = Math.round(rating * 2) / 2;
-  let yellowStars = roundedRating;
-  let whiteStars = 5 - roundedRating;
-  console.log(yellowStars);
-  console.log(whiteStars);
+  let fullStars = Math.floor(rating);
+  let halfStars = (rating % 1 < 1) ? 1 : 0;
+  let emptyStars = 5 - (fullStars + halfStars);
+  // console.log("full stars =", fullStars);
+  // console.log("half stars =", halfStars);
+  // console.log("empty stars =", emptyStars);
 
-  output = '<div title="' + rating + '">';
-  output += '<i class="fa fa-star" style="color: gold;"></i>'.repeat(yellowStars);
-  output += '<i class="fa fa-star-half-o" style="color: gold;"></i>'.repeat(
-    whiteStars
-  );
-  output += '<i class="fa fa-star-o" style="color: gold;"></i>'.repeat(whiteStars);
-  return output + '</div>';
-  // $('.business-rating-stars').text = output;
+  output = '<i class="fa fa-star" style="color: gold;"></i>'.repeat(fullStars);
+  output += '<i class="fa fa-star-half-o" style="color: gold;"></i>'.repeat(halfStars);
+  output += '<i class="fa fa-star-o" style="color: gold;"></i>'.repeat(emptyStars);
+  return output;
 }
-
+//return output + '</div>';
 //google API required constructor function to create map object and center it
 function initMap(data) {
   let lat = data.region.center.latitude;
@@ -117,6 +114,7 @@ function createMarker(business) {
 
 //Creates box on map with business info
 function createMapDetailBox(businesses) {
+  let starRating = createStarRating(results.rating);
   console.log("createMapDetailBox is running");
     return `
     <div class="results-data-card" id="repeat">
@@ -128,7 +126,7 @@ function createMapDetailBox(businesses) {
     <p class="business business-desc">${businesses.location.address1}</p>
     <p class="business business-phone">${businesses.display_phone}</p>
     <span class="business business-rating-qty">${businesses.rating}</span>
-    <span class="business business-rating-stars" onload="createStarRating(${businesses.rating});"></span>
+    <span class="business business-stars">${starRating}"></span>
     <a class="business business-review-qty">${businesses.review_count} reviews</a>
     <button role="button" type="button" class="airbnb-button" "value="${businesses.location.city}--${businesses.location.state}-${businesses.location.zip_code}">Find Airbnb's Nearby</button>
     </div>
