@@ -36,13 +36,11 @@ function getDataFromYelp(term, location, callback) {
 // Callback function that loops through each object in the yelp array & places it on page2
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
-  const results = data.businesses.map((item, index) =>
-    renderQueryResults(item)
-  );
-  initMap(data);
-  data.businesses.forEach((business) =>
-    createMarker(business));
-
+  let lat = data.region.center.latitude;
+  let lng = data.region.center.longitude;
+  map.setCenter({ lat, lng });
+  const results = data.businesses.map(item => renderQueryResults(item));
+  const markers = data.businesses.forEach(business => createMarker(business));
   $(".results-data").html(results);
   $(".page-1").addClass("hidden");
   $(".page-2").removeClass("hidden");
@@ -50,7 +48,6 @@ function displaySearchData(data) {
 
 //function to render the data results to HTML
 function renderQueryResults(results) {
-  let starRating = createStarRating(results.rating);
   //console.log("My starRating is", starRating);
   return `
 <div class="results-data-card" id="repeat">
@@ -62,9 +59,15 @@ function renderQueryResults(results) {
     <p class="business business-desc">${results.location.address1}</p>
     <p class="business business-phone">${results.display_phone}</p>
     <span class="business business-rating-qty">${results.rating}</span>
-    <span class="business business-stars">${starRating}</span>
+    <span class="business business-stars">${createStarRating(
+      results.rating
+    )}</span>
     <a class="business business-review-qty">${results.review_count} reviews</a>
-    <button role="button" type="button" class="airbnb-button" value="${results.location.city}--${results.location.state}-${results.location.zip_code}">Find Airbnb's Nearby</button>
+    <button role="button" type="button" class="airbnb-button" value="${
+      results.location.city
+    }--${results.location.state}-${
+    results.location.zip_code
+  }">Find Airbnb's Nearby</button>
   </div>
 </div>`;
 }
@@ -73,29 +76,30 @@ function renderQueryResults(results) {
 // takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
 function createStarRating(rating) {
   let fullStars = Math.floor(rating);
-  let halfStars = (rating % 1 < 1 && rating % 1 > 0) ? 1 : 0;
+  let halfStars = rating % 1 < 1 && rating % 1 > 0 ? 1 : 0;
   let emptyStars = 5 - (fullStars + halfStars);
   output = '<i class="fa fa-star" style="color: gold;"></i>'.repeat(fullStars);
-  output += '<i class="fa fa-star-half-o" style="color: gold;"></i>'.repeat(halfStars);
-  output += '<i class="fa fa-star-o" style="color: gold;"></i>'.repeat(emptyStars);
+  output += '<i class="fa fa-star-half-o" style="color: gold;"></i>'.repeat(
+    halfStars
+  );
+  output += '<i class="fa fa-star-o" style="color: gold;"></i>'.repeat(
+    emptyStars
+  );
   return output;
 }
 //return output + '</div>';
 
-
 //google API required constructor function to create map object and center it
-function initMap(data) {
-  let lat = data.region.center.latitude;
-  let lng = data.region.center.longitude;
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: lat, lng: lng },
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 0, lng: 0 },
     zoom: 10,
     draggable: true,
     zoomControl: true,
     scrollWheel: false,
     gestureHandling: "greedy"
   });
-  infoWindow = new google.maps.InfoWindow({ content: ''})
+  infoWindow = new google.maps.InfoWindow({ content: "" });
 }
 
 //google API constructor for making map markers
@@ -106,25 +110,27 @@ function createMarker(business) {
       lng: business.coordinates.longitude
     },
     map: map,
-    title: business.name,
+    title: business.name
     //content: createMapDetailBox(business)
   });
 
-  marker.addListener('click', function() {
+  marker.addListener("click", function() {
     infoWindow.open(map, marker);
     infoWindow.setContent(createMapDetailBox(business));
-  })
-
+  });
+  return marker;
 }
 
 //Creates box on map with business info
 function createMapDetailBox(businesses) {
   let starRating = createStarRating(businesses.rating);
   console.log("createMapDetailBox is running");
-    return `
+  return `
     <div class="results-data-card" id="repeat">
     <div class="business-img-container">
-    <img class="business-img" src="${businesses.image_url}" alt="${businesses.name}"/>
+    <img class="business-img" src="${businesses.image_url}" alt="${
+    businesses.name
+  }"/>
     </div>
     <div class="business-list-details">
     <p class="business business-name">${businesses.name}</p>
@@ -132,10 +138,16 @@ function createMapDetailBox(businesses) {
     <p class="business business-phone">${businesses.display_phone}</p>
     <span class="business business-rating-qty">${businesses.rating}</span>
     <span class="business business-stars">${starRating}"></span>
-    <a class="business business-review-qty">${businesses.review_count} reviews</a>
-    <button role="button" type="button" class="airbnb-button" "value="${businesses.location.city}--${businesses.location.state}-${businesses.location.zip_code}">Find Airbnb's Nearby</button>
+    <a class="business business-review-qty">${
+      businesses.review_count
+    } reviews</a>
+    <button role="button" type="button" class="airbnb-button" "value="${
+      businesses.location.city
+    }--${businesses.location.state}-${
+    businesses.location.zip_code
+  }">Find Airbnb's Nearby</button>
     </div>
-    </div>`
+    </div>`;
 }
 
 //creates
@@ -153,25 +165,25 @@ function createMapDetailBox(businesses) {
 
 //displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
-  $('#map-arrow').click(function() {
-    $('.results-container').slideUp();
-    $('#left-arrow').removeClass('hidden');
+  $("#map-arrow").click(function() {
+    $(".results-container").slideUp();
+    $("#left-arrow").removeClass("hidden");
   });
 
-  $('#left-arrow').click(function() {
-    $('.results-container').slideToggle('slow');
-    $('#left-arrow').addClass('hidden');
+  $("#left-arrow").click(function() {
+    $(".results-container").slideToggle("slow");
+    $("#left-arrow").addClass("hidden");
   });
 }
 
 //takes you to airbnb site with search results based on location
 function findAirbnbs() {
-  $('.results-data').on('click', '.airbnb-button', function(event) {
-  event.preventDefault;
-  let searchLoc = $(this).attr("value");
-  console.log("Im the clicked location", searchLoc);
-  window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
- });
+  $(".results-data").on("click", ".airbnb-button", function(event) {
+    event.preventDefault;
+    let searchLoc = $(this).attr("value");
+    console.log("Im the clicked location", searchLoc);
+    window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
+  });
 }
 
 //document ready functions for Jquery
