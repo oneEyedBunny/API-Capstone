@@ -21,7 +21,7 @@ function getDataFromYelp(term, location, callback) {
     data: {
       location: location,
       term: term,
-      limit: 20
+      limit: 50
     },
     dataType: "json",
     type: "GET",
