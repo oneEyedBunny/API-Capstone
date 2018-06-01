@@ -8,7 +8,6 @@ Thinkful- Async Programming- capstone project
 
 ## Page 2
   1. Airbnb link in map marker isn't working > no rendered html location to target for event delegation??
-  1. clean up 2 render functions to pass same parameter name- less confusing
   1. Search again isn't re-rendering map/markers
   1. Redo-search in area NEEDS to be added once map is toggled
 

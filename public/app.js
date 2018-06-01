@@ -39,33 +39,33 @@ function displaySearchData(data) {
   let lat = data.region.center.latitude;
   let lng = data.region.center.longitude;
   map.setCenter({ lat, lng });
-  const results = data.businesses.map(item => renderQueryResults(item));
+  const singleBusiness = data.businesses.map(item => renderQueryResults(item));
   const markers = data.businesses.forEach(business => createMarker(business));
-  $(".results-data").html(results);
+  $(".results-data").html(singleBusiness);
   $(".page-1").addClass("hidden");
   $(".page-2").removeClass("hidden");
 }
 
 //function to render the data results to HTML
-function renderQueryResults(results) {
+function renderQueryResults(business) {
   return `
 <div class="results-data-card">
   <div class="business-img-container">
-    <img class="business-img" src="${results.image_url}" alt="${results.name}"/>
+    <img class="business-img" src="${business.image_url}" alt="${business.name}"/>
   </div>
   <div class="business-list-details">
-    <p class="business business-name">${results.name}</p>
-    <p class="business business-desc">${results.location.address1}</p>
-    <p class="business business-phone">${results.display_phone}</p>
-    <span class="business business-rating-qty">${results.rating}</span>
+    <p class="business business-name">${business.name}</p>
+    <p class="business business-desc">${business.location.address1}</p>
+    <p class="business business-phone">${business.display_phone}</p>
+    <span class="business business-rating-qty">${business.rating}</span>
     <span class="business business-stars">${createStarRating(
-      results.rating
+      business.rating
     )}</span>
-    <a class="business business-review-qty">${results.review_count} reviews</a>
+    <a class="business business-review-qty">${business.review_count} reviews</a>
     <button role="button" type="button" class="airbnb-button" value="${
-      results.location.city
-    }--${results.location.state}-${
-    results.location.zip_code
+      business.location.city
+    }--${business.location.state}-${
+    business.location.zip_code
   }">Find Airbnb's Nearby</button>
   </div>
 </div>`;
@@ -111,33 +111,33 @@ function createMarker(business) {
     },
     map: map,
     title: business.name
-    //content: createMapDetailBox(business)
+    //content: renderMapMarkerBox(business)
   });
 
   marker.addListener("click", function() {
     infoWindow.open(map, marker);
-    infoWindow.setContent(createMapDetailBox(business));
+    infoWindow.setContent(renderMapMarkerBox(business));
   });
   return marker;
 }
 
 //Creates box on map markers with business info
-function createMapDetailBox(businesses) {
+function renderMapMarkerBox(business) {
   return `
     <div class="marker-results-data-card">
     <div class="marker-business-img-container">
-      <img class="marker-business-img" src="${businesses.image_url}" alt="${businesses.name}"/>
+      <img class="marker-business-img" src="${business.image_url}" alt="${business.name}"/>
     </div>
     <div class="marker-business-list-details">
-      <p class="marker-business marker-business-name">${businesses.name}</p>
-      <p class="marker-business marker-business-desc">${businesses.location.address1}</p>
-      <p class="marker-business marker-business-phone">${businesses.display_phone}</p>
-      <span class="marker-business marker-business-rating-qty">${businesses.rating}</span>
-      <span class="marker-business marker-business-stars">${createStarRating(businesses.rating)}</span>
-      <a class="marker-business marker-business-review-qty">${businesses.review_count} reviews</a>
+      <p class="marker-business marker-business-name">${business.name}</p>
+      <p class="marker-business marker-business-desc">${business.location.address1}</p>
+      <p class="marker-business marker-business-phone">${business.display_phone}</p>
+      <span class="marker-business marker-business-rating-qty">${business.rating}</span>
+      <span class="marker-business marker-business-stars">${createStarRating(business.rating)}</span>
+      <a class="marker-business marker-business-review-qty">${business.review_count} reviews</a>
     </div>
-    <button role="button" type="button" class="marker-airbnb-button" value="${businesses.location.city
-    }--${businesses.location.state}-${businesses.location.zip_code}">Find Airbnb's Nearby</button>
+    <button role="button" type="button" class="marker-airbnb-button" value="${business.location.city
+    }--${business.location.state}-${business.location.zip_code}">Find Airbnb's Nearby</button>
   </div>`;
 }
 
