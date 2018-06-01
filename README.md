@@ -8,7 +8,6 @@ Thinkful- Async Programming- capstone project
 
 ## Page 2
   1. Airbnb link in map marker isn't working > no rendered html location to target for event delegation??
-  1. Need to add mouse over and mouse out click features
   1. NEED to add a button for "Redo-search in area". Allows for once map is moved to get new data
 
 -----------
@@ -16,7 +15,7 @@ Thinkful- Async Programming- capstone project
 
 # Stretch Goal:
 
-1. Adjust animation on map click icons1 to swipe left instead of up
+1. Adjust animation on map click icons to swipe left instead of up
 1. Get location to auto populate in search field
 1. Pull 50 results instead of 20(still display 20), add next button that displays new 20 results
 

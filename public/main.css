@@ -12,7 +12,7 @@ html, body, main, .page-2 {
 html,
 body {
   margin: 0;
-  padding: 0; /*may not be needed */
+  padding: 0;
 }
 
 body {
@@ -173,8 +173,6 @@ div[class^="info-sec-text-"] {
   border-radius: 0px;
   text-align: right;
   padding: 8px;
-  /* position: fixed;
-  z-index: 2; */
 }
 
 /* ------------------------ page 2 styling */
@@ -348,7 +346,6 @@ div[class^="info-sec-text-"] {
 .marker-business-review-qty {
   display: inline-block;
   color: #093e84;
-  /* margin-left: 2px; */
 }
 
 .marker-airbnb-button {

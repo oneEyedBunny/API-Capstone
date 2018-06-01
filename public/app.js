@@ -117,17 +117,15 @@ function createMarker(business) {
     //content: renderMapMarkerBox(business)
   });
 
-  marker.addListener("click", function() {
+  marker.addListener('click', function() {
     infoWindow.open(map, marker);
     infoWindow.setContent(renderMapMarkerBox(business));
   });
-  // marker.addListener('mouseover', function() {
-  //   shows the box
-  // });
-  // marker.addListener('mouseout', function() {
-  //   hides the box
-  //});
-  return marker;
+  marker.addListener('mouseover', function() {
+    infoWindow.open(map, marker);
+    infoWindow.setContent(renderMapMarkerBox(business));
+  });
+  //return marker;
 }
 
 //Creates box on map markers with business info
