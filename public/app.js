@@ -36,9 +36,10 @@ function getDataFromYelp(term, location, callback) {
 // Callback function that loops through each object in the yelp array & places it on page2
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
-  let lat = data.region.center.latitude;
-  let lng = data.region.center.longitude;
-  map.setCenter({ lat, lng });
+  // let lat = data.region.center.latitude;
+  // let lng = data.region.center.longitude;
+  initMap(data);
+  // map.setCenter({ lat, lng });
   const singleBusiness = data.businesses.map(item => renderQueryResults(item));
   const markers = data.businesses.forEach(business => createMarker(business));
   $(".results-data").html(singleBusiness);
@@ -87,9 +88,11 @@ function createStarRating(rating) {
 }
 
 //google API required constructor function to create map object and center it
-function initMap() {
+function initMap(data) {
+  let lat = data.region.center.latitude;
+  let lng = data.region.center.longitude;
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 0, lng: 0 },
+    center: { lat: lat, lng: lng },
     zoom: 10,
     draggable: true,
     zoomControl: true,
@@ -102,7 +105,7 @@ function initMap() {
   });
 }
 
-//google API constructor for making map markers
+//google API constructor for making map markers and adding event listeners for user actions with markers
 function createMarker(business) {
   let marker = new google.maps.Marker({
     position: {
@@ -118,6 +121,12 @@ function createMarker(business) {
     infoWindow.open(map, marker);
     infoWindow.setContent(renderMapMarkerBox(business));
   });
+  // marker.addListener('mouseover', function() {
+  //   shows the box
+  // });
+  // marker.addListener('mouseout', function() {
+  //   hides the box
+  //});
   return marker;
 }
 
@@ -140,19 +149,6 @@ function renderMapMarkerBox(business) {
     }--${business.location.state}-${business.location.zip_code}">Find Airbnb's Nearby</button>
   </div>`;
 }
-
-//creates
-// function mapMarkerListners(){
-//   marker.addListener('click', function() {
-//     need to render it somewhere..where?
-//   })
-//   marker.addListener('mouseover', function() {
-//    shows the box
-//    })
-//   marker.addListener('mouseout', function() {
-//    hides the box
-//  })
-// }
 
 //displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
@@ -186,5 +182,4 @@ $(function() {
   watchSearchButton();
   arrowButtonListeners();
   findAirbnbs();
-  //mapMarkerListners();
 });
