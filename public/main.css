@@ -292,6 +292,75 @@ div[class^="info-sec-text-"] {
   padding: 5px;
 }
 
+/*----------------map marker formatting*/
+
+.marker-results-data-card {
+  background-color: #e8e8e8;
+  padding-bottom: 8px;
+}
+
+.marker-business-list-details {
+  margin: 0;
+  padding: 8px 2px 8px 3px;
+  display: inline-block;
+  width: 55%;
+  vertical-align: top;
+}
+
+.marker-business {
+  font-size: 10px;
+  color: #4c4c4c;
+  margin: 0;
+}
+
+.marker-business-name {
+  font-size: 13px;
+  color: black;
+}
+
+.marker-business-desc {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.marker-business-img-container {
+  width: 35%;
+  height: 90px;
+  margin: 10px 0 0 5px;
+  padding: 0;
+  display: inline-block;
+}
+
+.marker-business-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.marker-business-stars {
+  width: 50px;
+}
+
+.marker-business-rating-qty {
+  color: gold;
+}
+
+.marker-business-review-qty {
+  display: inline-block;
+  color: #093e84;
+  /* margin-left: 2px; */
+}
+
+.marker-airbnb-button {
+  background-color: white;
+  color: #093e84;
+  border: 1px solid #093e84;
+  font-size: 12px;
+  display: block;
+  margin: auto;
+}
+/*----------------map marker formatting*/
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

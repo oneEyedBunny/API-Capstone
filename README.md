@@ -7,14 +7,17 @@ Thinkful- Async Programming- capstone project
   1. search footer anchor is not centered on page when clicked, due to margin-top
 
 ## Page 2
-  1. Adjust formatting on box details on map markers
-  1. Adjust animation on map click icons
+  1. Airbnb link in map marker isn't working > no rendered html location to target for event delegation??
+  1. clean up 2 render functions to pass same parameter name- less confusing
+  1. Search again isn't re-rendering map/markers
+  1. Redo-search in area NEEDS to be added once map is toggled
 
 -----------
 
 
 # Stretch Goal:
 
+1. Adjust animation on map click icons1 to swipe left instead of up
 1. Get location to auto populate in search field
 
 # TO RUN THIS

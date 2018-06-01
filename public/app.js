@@ -48,9 +48,8 @@ function displaySearchData(data) {
 
 //function to render the data results to HTML
 function renderQueryResults(results) {
-  //console.log("My starRating is", starRating);
   return `
-<div class="results-data-card" id="repeat">
+<div class="results-data-card">
   <div class="business-img-container">
     <img class="business-img" src="${results.image_url}" alt="${results.name}"/>
   </div>
@@ -97,7 +96,10 @@ function initMap() {
     scrollWheel: false,
     gestureHandling: "greedy"
   });
-  infoWindow = new google.maps.InfoWindow({ content: "" });
+  infoWindow = new google.maps.InfoWindow({
+    content: "" ,
+    maxWidth: 200
+  });
 }
 
 //google API constructor for making map markers
@@ -122,30 +124,21 @@ function createMarker(business) {
 //Creates box on map markers with business info
 function createMapDetailBox(businesses) {
   return `
-    <div class="results-data-card" id="repeat">
-    <div class="business-img-container">
-    <img class="business-img" src="${businesses.image_url}" alt="${
-    businesses.name
-  }"/>
+    <div class="marker-results-data-card">
+    <div class="marker-business-img-container">
+      <img class="marker-business-img" src="${businesses.image_url}" alt="${businesses.name}"/>
     </div>
-    <div class="business-list-details">
-    <p class="business business-name">${businesses.name}</p>
-    <p class="business business-desc">${businesses.location.address1}</p>
-    <p class="business business-phone">${businesses.display_phone}</p>
-    <span class="business business-rating-qty">${businesses.rating}</span>
-    <span class="business business-stars">${createStarRating(
-      results.rating
-    )}</span>
-    <a class="business business-review-qty">${
-      businesses.review_count
-    } reviews</a>
-    <button role="button" type="button" class="airbnb-button" "value="${
-      businesses.location.city
-    }--${businesses.location.state}-${
-    businesses.location.zip_code
-  }">Find Airbnb's Nearby</button>
+    <div class="marker-business-list-details">
+      <p class="marker-business marker-business-name">${businesses.name}</p>
+      <p class="marker-business marker-business-desc">${businesses.location.address1}</p>
+      <p class="marker-business marker-business-phone">${businesses.display_phone}</p>
+      <span class="marker-business marker-business-rating-qty">${businesses.rating}</span>
+      <span class="marker-business marker-business-stars">${createStarRating(businesses.rating)}</span>
+      <a class="marker-business marker-business-review-qty">${businesses.review_count} reviews</a>
     </div>
-    </div>`;
+    <button role="button" type="button" class="marker-airbnb-button" value="${businesses.location.city
+    }--${businesses.location.state}-${businesses.location.zip_code}">Find Airbnb's Nearby</button>
+  </div>`;
 }
 
 //creates
@@ -179,7 +172,11 @@ function findAirbnbs() {
   $(".results-data").on("click", ".airbnb-button", function(event) {
     event.preventDefault;
     let searchLoc = $(this).attr("value");
-    console.log("Im the clicked location", searchLoc);
+    window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
+  });
+  $(".marker-results-data-card").on("click", ".marker-airbnb-button", function(event) {
+    event.preventDefault;
+    let searchLoc = $(this).attr("value");
     window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
   });
 }
