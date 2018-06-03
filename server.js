@@ -42,8 +42,8 @@ app.get("/yelp", function(req, res) {
 var staticPath = path.join(__dirname, "/public");
 app.use(express.static(staticPath));
 
-var PORT = 3000;
+var port = process.env.PORT || 3000;
 
-app.listen(PORT, function() {
-  console.log(`listening on port ${PORT}`);
+app.listen(port, function() {
+  console.log(`listening on port ${port}`);
 });
