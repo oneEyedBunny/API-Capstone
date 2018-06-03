@@ -28,9 +28,10 @@ function getDataFromYelp(term, location, callback) {
     success: callback,
     error: function(error) {
       console.log(error);
-     if(error.status==400) {
-       alert("We dont have data for this location, please select a different location");
-     }
+      if(error.status==400) {
+        $('.error-message-container').text('Unfortunately, we dont have data for this location, please select a different location');
+        $('.error-message-container').css("background-color", "white");
+      }
     }
   };
   $.ajax(settings);
@@ -53,26 +54,26 @@ function displaySearchData(data) {
 //function to render the data results to HTML
 function renderQueryResults(business) {
   return `
-<div class="results-data-card">
+  <div class="results-data-card">
   <div class="business-img-container">
-    <img class="business-img" src="${business.image_url}" alt="${business.name}"/>
+  <img class="business-img" src="${business.image_url}" alt="${business.name}"/>
   </div>
   <div class="business-list-details">
-    <p class="business business-name">${business.name}</p>
-    <p class="business business-desc">${business.location.address1}</p>
-    <p class="business business-phone">${business.display_phone}</p>
-    <span class="business business-rating-qty">${business.rating}</span>
-    <span class="business business-stars">${createStarRating(
-      business.rating
-    )}</span>
-    <a class="business business-review-qty">${business.review_count} reviews</a>
-    <button role="button" type="button" class="airbnb-button" value="${
-      business.location.city
-    }--${business.location.state}-${
+  <p class="business business-name">${business.name}</p>
+  <p class="business business-desc">${business.location.address1}</p>
+  <p class="business business-phone">${business.display_phone}</p>
+  <span class="business business-rating-qty">${business.rating}</span>
+  <span class="business business-stars">${createStarRating(
+    business.rating
+  )}</span>
+  <a class="business business-review-qty">${business.review_count} reviews</a>
+  <button role="button" type="button" class="airbnb-button" value="${
+    business.location.city
+  }--${business.location.state}-${
     business.location.zip_code
   }">Find Airbnb's Nearby</button>
   </div>
-</div>`;
+  </div>`;
 }
 
 //takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
@@ -119,12 +120,10 @@ function createMarker(business) {
     title: business.name
     //content: renderMapMarkerBox(business)
   });
-
   function openInfoBox() {
     infoWindow.open(map, marker);
     infoWindow.setContent(renderMapMarkerBox(business));
   }
-
   marker.addListener('click', openInfoBox);
   marker.addListener('mouseover', openInfoBox);
   //return marker;
@@ -133,20 +132,20 @@ function createMarker(business) {
 //Creates business info box for map markers
 function renderMapMarkerBox(business) {
   return `
-    <div class="marker-results-data-card">
-    <div class="marker-business-img-container">
-      <img class="marker-business-img" src="${business.image_url}" alt="${business.name}"/>
-    </div>
-    <div class="marker-business-list-details">
-      <p class="marker-business marker-business-name">${business.name}</p>
-      <p class="marker-business marker-business-desc">${business.location.address1}</p>
-      <p class="marker-business marker-business-phone">${business.display_phone}</p>
-      <span class="marker-business marker-business-rating-qty">${business.rating}</span>
-      <span class="marker-business marker-business-stars">${createStarRating(business.rating)}</span>
-      <a class="marker-business marker-business-review-qty">${business.review_count} reviews</a>
-    </div>
-    <button role="button" type="button" class="marker-airbnb-button" value="${business.location.city
-    }--${business.location.state}-${business.location.zip_code}">Find Airbnb's Nearby</button>
+  <div class="marker-results-data-card">
+  <div class="marker-business-img-container">
+  <img class="marker-business-img" src="${business.image_url}" alt="${business.name}"/>
+  </div>
+  <div class="marker-business-list-details">
+  <p class="marker-business marker-business-name">${business.name}</p>
+  <p class="marker-business marker-business-desc">${business.location.address1}</p>
+  <p class="marker-business marker-business-phone">${business.display_phone}</p>
+  <span class="marker-business marker-business-rating-qty">${business.rating}</span>
+  <span class="marker-business marker-business-stars">${createStarRating(business.rating)}</span>
+  <a class="marker-business marker-business-review-qty">${business.review_count} reviews</a>
+  </div>
+  <button role="button" type="button" class="marker-airbnb-button" value="${business.location.city
+  }--${business.location.state}-${business.location.zip_code}">Find Airbnb's Nearby</button>
   </div>`;
 }
 
@@ -163,12 +162,13 @@ function arrowButtonListeners() {
   });
 }
 
-//takes you to airbnb site with search results based on location
+//when AirBnB buttons are clicked , function called that takes you to the site with search results
 function findAirbnbs() {
   $(".results-data").on("click", ".airbnb-button", findAirbnbsCallback);
   $(".map-container").on("click", ".marker-airbnb-button",findAirbnbsCallback);
 }
 
+//takes you to airbnb site with search results based on location
 function findAirbnbsCallback(event) {
   event.preventDefault;
   let searchLoc = $(this).attr("value");

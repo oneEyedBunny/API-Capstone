@@ -8,7 +8,7 @@
     font-size: 20px;
   }
 
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 77%;
   }
 
@@ -32,7 +32,7 @@
     padding: 95px 15px 110px;
   }
 
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 75%;
   }
 
@@ -85,7 +85,7 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 65%;
   }
 
@@ -103,7 +103,7 @@
 }
 
 @media only screen and (min-width: 700px) {
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 58%;
   }
 
@@ -136,7 +136,7 @@
     margin-bottom: 100px;
   }
 
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 54%;
   }
 
@@ -165,7 +165,7 @@
 }
 
 @media only screen and (min-width: 1050px) {
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 48%;
   }
 
@@ -177,7 +177,7 @@
 }
 
 @media only screen and (min-width: 1150px) {
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 45%;
   }
 
@@ -193,7 +193,7 @@
 }
 
 @media only screen and (min-width: 1300px) {
-  .standard-box {
+  .standard-box, .error-message-container {
     width: 560px;
   }
 

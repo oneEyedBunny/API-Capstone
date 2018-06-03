@@ -146,6 +146,15 @@ fieldset {
 }
 /************************************/
 
+.error-message-container {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin: 15px auto;
+  padding: 10px;
+  width: 85%;
+}
+
 .info-sec-container {
   padding-top: 30px;
 }
@@ -197,10 +206,10 @@ div[class^="info-sec-text-"] {
 }
 
 .nav-arrow-container-2 {
-  background-color: #357ec7;
+  background-color: #82CAFA; /*#38ACEC;*/
   display: inline-block;
   width: 45px;
-  margin-top: 40px;
+  margin-top: 60px;
   position: fixed;
   z-index: 1;
 }

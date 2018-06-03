@@ -5,7 +5,6 @@ Thinkful- Async Programming- capstone project
 
 ## Page 2
   1. format error message
-  1. Adjust arrow background to white and add more margin so it's lined up with where map icon was
 
 --------------------------
 
