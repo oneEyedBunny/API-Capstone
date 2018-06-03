@@ -4,7 +4,7 @@ Thinkful- Async Programming- capstone project
 # Pending:
 
 ## Page 2
-  1. format error message
+  1. check mobile- firefox
 
 --------------------------
 
