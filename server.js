@@ -35,6 +35,8 @@ app.get("/yelp", function(req, res) {
       res.send(response.jsonBody);
     })
     .catch(e => {
+      console.log("hi", e.response.body);
+      res.status(400).send(e.response.body.error);
       console.log(e);
     });
 });

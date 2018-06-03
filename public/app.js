@@ -28,6 +28,9 @@ function getDataFromYelp(term, location, callback) {
     success: callback,
     error: function(error) {
       console.log(error);
+     if(error.status==400) {
+       alert("We dont have data for this location, please select a different location");
+     }
     }
   };
   $.ajax(settings);
@@ -117,14 +120,13 @@ function createMarker(business) {
     //content: renderMapMarkerBox(business)
   });
 
-  marker.addListener('click', function() {
+  function openInfoBox() {
     infoWindow.open(map, marker);
     infoWindow.setContent(renderMapMarkerBox(business));
-  });
-  marker.addListener('mouseover', function() {
-    infoWindow.open(map, marker);
-    infoWindow.setContent(renderMapMarkerBox(business));
-  });
+  }
+
+  marker.addListener('click', openInfoBox);
+  marker.addListener('mouseover', openInfoBox);
   //return marker;
 }
 
@@ -163,16 +165,14 @@ function arrowButtonListeners() {
 
 //takes you to airbnb site with search results based on location
 function findAirbnbs() {
-  $(".results-data").on("click", ".airbnb-button", function(event) {
-    event.preventDefault;
-    let searchLoc = $(this).attr("value");
-    window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
-  });
-  $(".marker-results-data-card").on("click", ".marker-airbnb-button", function(event) {
-    event.preventDefault;
-    let searchLoc = $(this).attr("value");
-    window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
-  });
+  $(".results-data").on("click", ".airbnb-button", findAirbnbsCallback);
+  $(".map-container").on("click", ".marker-airbnb-button",findAirbnbsCallback);
+}
+
+function findAirbnbsCallback(event) {
+  event.preventDefault;
+  let searchLoc = $(this).attr("value");
+  window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
 }
 
 //document ready functions for Jquery
