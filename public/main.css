@@ -118,9 +118,11 @@ fieldset {
   margin-top: 6px;
   border-radius: 0px;
 }
+
 .search-data {
   width: calc(60% - 16px);
 }
+
 .search-loc {
   width: calc(40% - 16px);
   margin-left: -10px;
@@ -180,6 +182,11 @@ div[class^="info-sec-text-"] {
 .form-container-2 {
   display: inline-block;
   margin: 25px 0px 10px;
+}
+
+#search-data-2,
+#search-loc-2  {
+  font-size: 10px;
 }
 
 .nav-arrow-container {

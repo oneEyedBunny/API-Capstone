@@ -72,7 +72,7 @@ function renderQueryResults(business) {
 </div>`;
 }
 
-// takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
+//takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
 function createStarRating(rating) {
   let fullStars = Math.floor(rating);
   let halfStars = rating % 1 < 1 && rating % 1 > 0 ? 1 : 0;
@@ -128,7 +128,7 @@ function createMarker(business) {
   //return marker;
 }
 
-//Creates box on map markers with business info
+//Creates business info box for map markers
 function renderMapMarkerBox(business) {
   return `
     <div class="marker-results-data-card">
@@ -151,12 +151,12 @@ function renderMapMarkerBox(business) {
 //displays either the map or the results data depending on which arrow is clicked
 function arrowButtonListeners() {
   $("#map-arrow").click(function() {
-    $(".results-container").slideUp();
+    $(".results-container").animate({width: "toggle"}, 300);
     $("#left-arrow").removeClass("hidden");
   });
 
-  $("#left-arrow").click(function() {
-    $(".results-container").slideToggle("slow");
+  $(".nav-arrow-container-2").click(function() {
+    $(".results-container").animate({width: "toggle"}, 300);
     $("#left-arrow").addClass("hidden");
   });
 }
