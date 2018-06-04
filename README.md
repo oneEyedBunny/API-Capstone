@@ -4,7 +4,7 @@ Thinkful- Async Programming- capstone project
 # Pending:
 
 ## Page 2
-  1. check mobile- firefox
+  1. check firefox
   1. Fix that stupid search icon
 
 --------------------------
