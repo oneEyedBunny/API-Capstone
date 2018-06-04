@@ -6,7 +6,7 @@ TES is an app designed to aid users with finding AirBnb's in desirable locations
 
 # Technology used:
 * JavaScript/ Jquery
-* HTML 
+* HTML
 * CSS
 * Node.js
 
@@ -18,7 +18,7 @@ TES is an app designed to aid users with finding AirBnb's in desirable locations
 ![](README-images/search-results-mobile.png)
 
 ### Results page- full screen view:
-![](README-images/README-images/search-results.png)
+![](README-images/search-results.png)
 
 
 ---------------------------
