@@ -162,6 +162,14 @@ function arrowButtonListeners() {
   });
 }
 
+
+function navLinksListeners() {
+ $('.nav-link').click(function() {
+   $(".page-2").addClass("hidden");
+   $(".page-1").removeClass("hidden");
+ })
+}
+
 //when AirBnB buttons are clicked , function called that takes you to the site with search results
 function findAirbnbs() {
   $(".results-data").on("click", ".airbnb-button", findAirbnbsCallback);
@@ -179,5 +187,6 @@ function findAirbnbsCallback(event) {
 $(function() {
   watchSearchButton();
   arrowButtonListeners();
+  navLinksListeners();
   findAirbnbs();
 });

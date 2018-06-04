@@ -1,4 +1,20 @@
 /* Non-mobile grid/styling */
+@media only screen and (min-width: 380px) {
+  .standard-box, .error-message-container {
+    width: 80%;
+  }
+
+  .search-data,
+  .search-loc {
+    font-size: 11px;
+  }
+
+  .search-button {
+    width: 27px;
+  }
+
+}
+
 @media only screen and (min-width: 400px) {
   * {
     font-size: 16px;
@@ -16,11 +32,6 @@
     padding: 90px 15px 100px;
   }
 
-  .search-data,
-  .search-loc {
-    font-size: 12px;
-  }
-
   #search-data-2,
   #search-loc-2  {
     font-size: 10.5px;
@@ -34,6 +45,10 @@
 
   .standard-box, .error-message-container {
     width: 75%;
+  }
+
+  .search-button {
+    width: 29px;
   }
 
   .intro-text {
@@ -156,6 +171,10 @@
   .search-data,
   .search-loc {
     font-size: 13px;
+  }
+
+  .search-button {
+    width: 30px;
   }
 
   .info-sec-card {
