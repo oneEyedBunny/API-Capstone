@@ -12,17 +12,13 @@ TES is an app designed to aid users with finding AirBnb's in desirable locations
 
 # Screenshots:
 ### Home page:
-<img src="README-images/main-page.png" width=600px align="left" />
-
------------------------------------------------------------
+![](README-images/main-page.png)
 
 ### Results page- mobile view:
-<img src="README-images/search-results-mobile.png" width=400px align="left" /> 
+![](README-images/search-results-mobile.png)
 
 ### Results page- full screen view:
-<img src="README-images/search-results.png" width=600px />
-
-
+![](README-images/README-images/search-results.png)
 
 
 ---------------------------
