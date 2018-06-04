@@ -40,10 +40,7 @@ function getDataFromYelp(term, location, callback) {
 // Callback function that loops through each object in the yelp array & places it on page2
 function displaySearchData(data) {
   console.log("my yelp data is:", data);
-  // let lat = data.region.center.latitude;
-  // let lng = data.region.center.longitude;
   initMap(data);
-  // map.setCenter({ lat, lng });
   const singleBusiness = data.businesses.map(item => renderQueryResults(item));
   const markers = data.businesses.forEach(business => createMarker(business));
   $(".results-data").html(singleBusiness);
@@ -118,7 +115,6 @@ function createMarker(business) {
     },
     map: map,
     title: business.name
-    //content: renderMapMarkerBox(business)
   });
   function openInfoBox() {
     infoWindow.open(map, marker);
@@ -126,7 +122,6 @@ function createMarker(business) {
   }
   marker.addListener('click', openInfoBox);
   marker.addListener('mouseover', openInfoBox);
-  //return marker;
 }
 
 //Creates business info box for map markers
@@ -162,7 +157,7 @@ function arrowButtonListeners() {
   });
 }
 
-
+//Allows users to click on navigation and take them to the section on page1
 function navLinksListeners() {
  $('.nav-link').click(function() {
    $(".page-2").addClass("hidden");
