@@ -5,21 +5,22 @@ https://tes-travel-explore-sleep.herokuapp.com/
 TES is an app designed to aid users with finding AirBnb's in desirable locations. If you enjoy staying near cool restaurants, coffee shops, or bars for example, TES will help you find those things, and then from the search results you can select the AirBnbs nearby. You will be taken to the AirBnb website so you can refine your Airbnb search by date, or additional parameters that matter to you.
 
 # Technology used:
-JavaScript/Jquery
-HTML
-CSS
-Node.js
+* JavaScript/ Jquery
+* HTML 
+* CSS
+* Node.js
 
 # Screenshots:
-Home page
+### Home page:
+<img src="README-images/main-page.png" width=600px align="left" />
 
+-----------------------------------------------------------
 
+### Results page- mobile view:
+<img src="README-images/search-results-mobile.png" width=400px align="left" /> 
 
-
-
-Results page- mobile view
-
-Results page- full screen view
+### Results page- full screen view:
+<img src="README-images/search-results.png" width=600px />
 
 
 
@@ -33,6 +34,7 @@ Results page- full screen view
   1. GH page isn't working- need npm package??
 
 --------------------------
+
 
 # Stretch Goal:
 
