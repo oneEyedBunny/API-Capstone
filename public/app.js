@@ -3,34 +3,34 @@ let infoWindow;
 
 //Makes the call to Yelp once the search button has been clicked, resets the query values to empty
 function watchSearchButton() {
-  $(".search-form").submit(function(event) {
+  $('.search-form').submit(function(event) {
     event.preventDefault();
     let queryTarget = $(event.currentTarget);
-    let queryValue = queryTarget.find(".search-data").val();
-    let queryLocation = queryTarget.find(".search-loc").val();
+    let queryValue = queryTarget.find('.search-data').val();
+    let queryLocation = queryTarget.find('.search-loc').val();
     getDataFromYelp(queryValue, queryLocation, displaySearchData);
-    queryValue = "";
-    queryLocation = "";
+    queryValue = '';
+    queryLocation = '';
   });
 }
 
 //Request object for Yelp API
 function getDataFromYelp(term, location, callback) {
   const settings = {
-    url: "/yelp",
+    url: '/yelp',
     data: {
       location: location,
       term: term,
       limit: 50
     },
-    dataType: "json",
-    type: "GET",
+    dataType: 'json',
+    type: 'GET',
     success: callback,
     error: function(error) {
       console.log(error);
       if(error.status==400) {
         $('.error-message-container').text('Unfortunately, we dont have data for this location, please select a different location');
-        $('.error-message-container').css("background-color", "white");
+        $('.error-message-container').css('background-color', 'white');
       }
     }
   };
@@ -39,13 +39,12 @@ function getDataFromYelp(term, location, callback) {
 
 //Callback function that loops through each object in the Yelp data object & places it on page2
 function displaySearchData(data) {
-  // console.log("my yelp data is:", data);
   initMap(data);
   const singleBusiness = data.businesses.map(item => renderQueryResults(item));
   const markers = data.businesses.forEach(business => createMarker(business));
-  $(".results-data").html(singleBusiness);
-  $(".page-1").addClass("hidden");
-  $(".page-2").removeClass("hidden");
+  $('.results-data').html(singleBusiness);
+  $('.page-1').addClass('hidden');
+  $('.page-2').removeClass('hidden');
 }
 
 //Renders the business data results to HTML
@@ -92,16 +91,16 @@ function createStarRating(rating) {
 function initMap(data) {
   let lat = data.region.center.latitude;
   let lng = data.region.center.longitude;
-  map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: lat, lng: lng },
     zoom: 10,
     draggable: true,
     zoomControl: true,
     scrollWheel: false,
-    gestureHandling: "greedy"
+    gestureHandling: 'greedy'
   });
   infoWindow = new google.maps.InfoWindow({
-    content: "" ,
+    content: '' ,
     maxWidth: 200
   });
 }
@@ -146,35 +145,35 @@ function renderMapMarkerBox(business) {
 
 //Displays either the map or the results data depending on which button is clicked
 function arrowButtonListeners() {
-  $("#map-arrow").click(function() {
-    $(".results-container").animate({width: "toggle"}, 300);
-    $("#left-arrow").removeClass("hidden");
+  $('#map-arrow').click(function() {
+    $('.results-container').animate({width: 'toggle'}, 300);
+    $('#left-arrow').removeClass('hidden');
   });
 
-  $(".nav-arrow-container-").click(function() {
-    $(".nav-arrow-container-2").animate({width: "toggle"}, 300);
-    $("#left-arrow").addClass("hidden");
+  $('.nav-arrow-container-').click(function() {
+    $('.nav-arrow-container-2').animate({width: 'toggle'}, 300);
+    $('#left-arrow').addClass('hidden');
   });
 }
 
 //Allows users to click on navigation and take them to the section on page1
 function navLinksListeners() {
   $('.nav-link').click(function() {
-    $(".page-2").addClass("hidden");
-    $(".page-1").removeClass("hidden");
+    $('.page-2').addClass('hidden');
+    $('.page-1').removeClass('hidden');
   })
 }
 
 //When AirBnB buttons are clicked, the callback is run
 function findAirbnbs() {
-  $(".results-data").on("click", ".airbnb-button", findAirbnbsCallback);
-  $(".map-container").on("click", ".marker-airbnb-button",findAirbnbsCallback);
+  $('.results-data').on('click', '.airbnb-button', findAirbnbsCallback);
+  $('.map-container').on('click', '.marker-airbnb-button',findAirbnbsCallback);
 }
 
 //Takes you to Airbnb site with home search results based on location from click above
 function findAirbnbsCallback(event) {
   event.preventDefault;
-  let searchLoc = $(this).attr("value");
+  let searchLoc = $(this).attr('value');
   window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
 }
 
