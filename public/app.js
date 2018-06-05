@@ -150,8 +150,8 @@ function arrowButtonListeners() {
     $('#left-arrow').removeClass('hidden');
   });
 
-  $('.nav-arrow-container-').click(function() {
-    $('.nav-arrow-container-2').animate({width: 'toggle'}, 300);
+  $('.nav-arrow-container-2').click(function() {
+    $('.results-container').animate({width: 'toggle'}, 300);
     $('#left-arrow').addClass('hidden');
   });
 }
