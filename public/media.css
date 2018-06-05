@@ -116,6 +116,10 @@
     font-size: 21px;
   }
 
+  .right-nav-bar {
+    margin-right: 10px;
+  }
+
   .background-image-container {
     padding: 100px 15px 120px;
   }
@@ -132,6 +136,10 @@
 
   h1, .anchor-special-font {
     font-size: 22px;
+  }
+
+  .right-nav-bar {
+    margin-right: 15px;
   }
 
   .intro-text {
@@ -202,6 +210,10 @@
 @media only screen and (min-width: 1150px) {
   .standard-box, .error-message-container {
     width: 45%;
+  }
+
+  .right-nav-bar {
+    margin-right: 20px;
   }
 
   .info-sec-card {
