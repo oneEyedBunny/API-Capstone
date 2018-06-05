@@ -22,20 +22,3 @@ I love staying in AirBnbs that are within walking distance to restaurants and co
 
 ### Results page- full screen view----
 ![](README-images/search-results.png)
-
-
----------------------------
-# Pending:
-
-## Page 2
-  1. check firefox
-  1. Fix that stupid search icon
-  1. GH page isn't working- need npm package??
-
---------------------------
-
-
-# Stretch Goal:
-
-1. Get location to auto populate in search field
-1. Add a button for "Redo-search in area" when on map. Allows for once map is moved to get new data

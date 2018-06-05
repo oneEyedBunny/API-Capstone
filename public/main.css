@@ -6,7 +6,7 @@
 }
 
 html, body, main, .page-2 {
-   height: 100%; /* ensures google map can render */
+  height: 100%; /* ensures google map can render */
 }
 
 html,
@@ -51,7 +51,7 @@ nav {
 .right-nav-bar {
   float: right;
   display: inline-block;
-  padding: 10px 2px 0 0;
+  padding: 10px;
 }
 
 .left-nav-bar {
@@ -64,6 +64,10 @@ nav {
   color: white;
   text-align: right;
   padding: 0px 5px;
+}
+
+.nav-link::first-letter {
+  color: #F26522;
 }
 
 a:hover,
@@ -108,16 +112,14 @@ h1 {
 fieldset {
   border-style: none;
 }
-/************************************/
 
 .search-data,
 .search-loc {
   font-size: 10px;
-  box-shadow: 5px 5px 5px #c4c4c4; /*#888888*/;
+  box-shadow: 5px 5px 5px #c4c4c4;
   padding: 5px 0px 5px 3px;
   margin-top: 6px;
   border-radius: 0px;
-  /* background-color: white; */
 }
 
 input[type=search]:focus {
@@ -126,7 +128,7 @@ input[type=search]:focus {
 
 /* Removes Chrome default of yellow background when typing */
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px white inset;
+  -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
 .search-data {
@@ -144,7 +146,7 @@ input:-webkit-autofill {
   background-color: white;
   margin-left: -5px;
   border-radius: 0px;
-  box-shadow: 5px 5px 5px #c4c4c4; /*#888888*/;
+  box-shadow: 5px 5px 5px #c4c4c4;
   padding: 0px;
   font-size: 12px;
   border-color: rgb(238, 238, 238);
@@ -155,9 +157,7 @@ input:-webkit-autofill {
   width: 99%;
   vertical-align: middle;
   border-radius: 0px;
-  /* object-fit: contain; */
 }
-/************************************/
 
 .error-message-container {
   color: red;
@@ -166,6 +166,10 @@ input:-webkit-autofill {
   margin: 15px auto;
   padding: 10px;
   width: 85%;
+}
+
+.anchor-special-font {
+  color: #F26522;
 }
 
 .info-sec-container {
@@ -410,7 +414,7 @@ div[class^="info-sec-text-"] {
 
 /* corner of vertical/horozontal intersection */
 /* ::-webkit-scrollbar-corner {
-  background: red;
+background: red;
 } */
 
 /* ::-webkit-resizer {
@@ -418,6 +422,6 @@ div[class^="info-sec-text-"] {
 } */
 
 /* .results-footer {
-  background-color: red;
-  height: 10px;
+background-color: red;
+height: 10px;
 } */

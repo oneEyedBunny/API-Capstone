@@ -1,7 +1,7 @@
 let map;
 let infoWindow;
 
-// Makes the call to Yelp once the search button has been clicked, resets the query values to empty
+//Makes the call to Yelp once the search button has been clicked, resets the query values to empty
 function watchSearchButton() {
   $(".search-form").submit(function(event) {
     event.preventDefault();
@@ -14,7 +14,7 @@ function watchSearchButton() {
   });
 }
 
-//request object for Yelp
+//Request object for Yelp API
 function getDataFromYelp(term, location, callback) {
   const settings = {
     url: "/yelp",
@@ -37,9 +37,9 @@ function getDataFromYelp(term, location, callback) {
   $.ajax(settings);
 }
 
-// Callback function that loops through each object in the yelp array & places it on page2
+//Callback function that loops through each object in the Yelp data object & places it on page2
 function displaySearchData(data) {
-  console.log("my yelp data is:", data);
+  // console.log("my yelp data is:", data);
   initMap(data);
   const singleBusiness = data.businesses.map(item => renderQueryResults(item));
   const markers = data.businesses.forEach(business => createMarker(business));
@@ -48,7 +48,7 @@ function displaySearchData(data) {
   $(".page-2").removeClass("hidden");
 }
 
-//function to render the data results to HTML
+//Renders the business data results to HTML
 function renderQueryResults(business) {
   return `
   <div class="results-data-card">
@@ -73,7 +73,7 @@ function renderQueryResults(business) {
   </div>`;
 }
 
-//takes the rating and rounds it down, then determines if there is a halfstar, then fills stars using a fontawesome CDN
+//Takes the business rating & determines how to fill (full, half, empty) the stars using fontawesome CDN
 function createStarRating(rating) {
   let fullStars = Math.floor(rating);
   let halfStars = rating % 1 < 1 && rating % 1 > 0 ? 1 : 0;
@@ -88,7 +88,7 @@ function createStarRating(rating) {
   return output;
 }
 
-//google API required constructor function to create map object and center it
+//Google API constructor function to create map object and center it
 function initMap(data) {
   let lat = data.region.center.latitude;
   let lng = data.region.center.longitude;
@@ -106,7 +106,7 @@ function initMap(data) {
   });
 }
 
-//google API constructor for making map markers and adding event listeners for user actions with markers
+//Google API constructor for making map markers and adding event listeners for user actions with markers
 function createMarker(business) {
   let marker = new google.maps.Marker({
     position: {
@@ -124,7 +124,7 @@ function createMarker(business) {
   marker.addListener('mouseover', openInfoBox);
 }
 
-//Creates business info box for map markers
+//Renders the business info box for the map markers
 function renderMapMarkerBox(business) {
   return `
   <div class="marker-results-data-card">
@@ -144,14 +144,14 @@ function renderMapMarkerBox(business) {
   </div>`;
 }
 
-//displays either the map or the results data depending on which arrow is clicked
+//Displays either the map or the results data depending on which button is clicked
 function arrowButtonListeners() {
   $("#map-arrow").click(function() {
     $(".results-container").animate({width: "toggle"}, 300);
     $("#left-arrow").removeClass("hidden");
   });
 
-  $(".nav-arrow-container-2").click(function() {
+  $(".nav-arrow-container-").click(function() {
     $(".results-container").animate({width: "toggle"}, 300);
     $("#left-arrow").addClass("hidden");
   });
@@ -159,26 +159,26 @@ function arrowButtonListeners() {
 
 //Allows users to click on navigation and take them to the section on page1
 function navLinksListeners() {
- $('.nav-link').click(function() {
-   $(".page-2").addClass("hidden");
-   $(".page-1").removeClass("hidden");
- })
+  $('.nav-link').click(function() {
+    $(".page-2").addClass("hidden");
+    $(".page-1").removeClass("hidden");
+  })
 }
 
-//when AirBnB buttons are clicked , function called that takes you to the site with search results
+//When AirBnB buttons are clicked, the callback is run
 function findAirbnbs() {
   $(".results-data").on("click", ".airbnb-button", findAirbnbsCallback);
   $(".map-container").on("click", ".marker-airbnb-button",findAirbnbsCallback);
 }
 
-//takes you to airbnb site with search results based on location
+//Takes you to Airbnb site with home search results based on location from click above
 function findAirbnbsCallback(event) {
   event.preventDefault;
   let searchLoc = $(this).attr("value");
   window.open(`https://www.airbnb.com/s/${searchLoc}/homes`);
 }
 
-//document ready functions for Jquery
+//Document ready functions for Jquery
 $(function() {
   watchSearchButton();
   arrowButtonListeners();

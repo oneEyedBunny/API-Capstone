@@ -43,6 +43,10 @@
     padding: 95px 15px 110px;
   }
 
+  .right-nav-bar {
+    margin-right: 5px;
+  }
+
   .standard-box, .error-message-container {
     width: 75%;
   }

@@ -22,6 +22,7 @@ app.use(function(req, res, next) {
 });
 
 app.get("/yelp", function(req, res) {
+  console.log('asdfasdfdas');
   console.log(req.query);
   console.log(req.params);
   client
