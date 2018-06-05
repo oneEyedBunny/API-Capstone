@@ -3,6 +3,7 @@
   font-size: 15px;
   border-radius: 4px;
   box-sizing: border-box;
+  -webkit-appearance: none; /* fixes Safari input style issues */
 }
 
 html, body, main, .page-2 {
@@ -66,10 +67,6 @@ nav {
   padding: 0px 5px;
 }
 
-.nav-link::first-letter {
-  color: #F26522;
-}
-
 a:hover,
 a:visited,
 a:link,
@@ -99,10 +96,14 @@ a:active {
   height: 45px;
 }
 
-h1 {
+h1, .anchor-special-font {
   color: #093e84;
   font-size: 18px;
   margin-top: -5px;
+}
+
+.anchor-special-font {
+  color: #F26522;
 }
 
 .form-container {
@@ -166,10 +167,6 @@ input:-webkit-autofill {
   margin: 15px auto;
   padding: 10px;
   width: 85%;
-}
-
-.anchor-special-font {
-  color: #F26522;
 }
 
 .info-sec-container {
